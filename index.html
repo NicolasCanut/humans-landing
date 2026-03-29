@@ -560,6 +560,7 @@
       .wl-form { flex-direction:column; }
     }
   </style>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
@@ -607,10 +608,10 @@
       <div class="phone-body">
         <div class="stories">
           <div class="story new">+</div>
-          <div class="story">⚽</div>
-          <div class="story">🎸</div>
-          <div class="story">🌿</div>
-          <div class="story">🎉</div>
+          <div class="story" style="background:linear-gradient(135deg,#1a3a4a,#0d2535);font-size:12px;font-weight:700;color:#00E5FF;">MA</div>
+          <div class="story" style="background:linear-gradient(135deg,#2a1a3a,#1a0d35);font-size:12px;font-weight:700;color:#a78bfa;">LG</div>
+          <div class="story" style="background:linear-gradient(135deg,#1a3a1a,#0d2510);font-size:12px;font-weight:700;color:#6ee7b7;">RP</div>
+          <div class="story" style="background:linear-gradient(135deg,#3a2a1a,#251a0d);font-size:12px;font-weight:700;color:#fbbf24;">JK</div>
         </div>
         <div class="ecard">
           <div class="ecard-img">⚽</div>
@@ -812,8 +813,9 @@
     <p class="rv d2">Dejá tu mail y te avisamos cuando Humans llegue a tu ciudad.</p>
     <div class="wl-form rv d3">
       <input class="wl-input" type="email" id="wl-email" placeholder="tu@mail.com" />
-      <button class="wl-btn" onclick="joinWaitlist()">Anotarme</button>
+      <button class="wl-btn" onclick="joinWaitlist()" id="wl-submit">Anotarme</button>
     </div>
+    <div class="g-recaptcha" id="wl-captcha" data-sitekey="6LdWoZwsAAAAACla2t4pGVFnHWd58zOoVmKS0jPe" style="margin: 16px auto 0; display:flex; justify-content:center;"></div>
     <div class="wl-success" id="wl-ok">🎉 ¡Listo! Te avisamos cuando estemos listos.</div>
     <p class="wl-note rv">Sin spam. Solo te escribimos cuando la app esté lista.</p>
   </div>
@@ -861,17 +863,48 @@
   })();
 
   // Waitlist
-  function joinWaitlist() {
+  async function joinWaitlist() {
     const input = document.getElementById('wl-email');
     const val = input.value.trim();
+    const captcha = grecaptcha.getResponse();
+
     if (!val || !val.includes('@')) {
       input.style.borderColor = 'rgba(255,80,80,0.5)';
       setTimeout(() => input.style.borderColor = '', 1500);
       return;
     }
-    document.querySelector('.wl-form').style.display = 'none';
-    document.querySelector('.wl-note').style.display = 'none';
-    document.getElementById('wl-ok').style.display = 'block';
+    if (!captcha) {
+      alert('Por favor completá el captcha.');
+      return;
+    }
+
+    const btn = document.getElementById('wl-submit');
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: val, captcha })
+      });
+      if (res.ok) {
+        document.querySelector('.wl-form').style.display = 'none';
+        document.querySelector('.wl-note').style.display = 'none';
+        document.getElementById('wl-captcha').style.display = 'none';
+        document.getElementById('wl-ok').style.display = 'block';
+      } else {
+        btn.textContent = 'Anotarme';
+        btn.disabled = false;
+        alert('Algo salió mal. Intentá de nuevo.');
+        grecaptcha.reset();
+      }
+    } catch(e) {
+      btn.textContent = 'Anotarme';
+      btn.disabled = false;
+      alert('Algo salió mal. Intentá de nuevo.');
+      grecaptcha.reset();
+    }
   }
 
   // Nav active highlight on scroll
