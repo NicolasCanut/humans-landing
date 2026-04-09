@@ -3,999 +3,157 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Humans — Eventos reales, gente real</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <title>Humans</title>
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
   <style>
-    :root {
-      --cyan: #00E5FF;
-      --cyan-dim: rgba(0,229,255,0.10);
-      --cyan-glow: rgba(0,229,255,0.30);
-      --bg: #080B10;
-      --bg2: #0D1117;
-      --bg3: #111820;
-      --text: #EFF3F8;
-      --muted: #6A7A8A;
-      --border: rgba(255,255,255,0.07);
-      --r: 16px;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      overflow-x: hidden;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f0f0f;
+      color: #ffffff;
     }
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 48px;
-      background: rgba(8,11,16,0.75);
-      backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--border);
-    }
-    .logo {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 800; font-size: 21px; letter-spacing: -0.2px;
-      color: var(--text); text-decoration: none;
-    }
-    .logo em { color: var(--cyan); font-style: normal; }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a {
-      color: var(--muted); text-decoration: none;
-      font-size: 14px; font-weight: 500;
-      transition: color .2s;
-    }
-    .nav-links a:hover { color: var(--text); }
-    .nav-btn {
-      background: var(--cyan); color: #000;
-      border: none; border-radius: 100px;
-      padding: 9px 22px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700; font-size: 14px;
-      cursor: pointer; text-decoration: none;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .nav-btn:hover { transform: translateY(-1px); box-shadow: 0 0 22px var(--cyan-glow); }
-
-    /* HERO */
-    .hero {
+    .container {
       min-height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    header {
+      padding: 60px 20px;
       text-align: center;
-      padding: 140px 24px 100px;
-      position: relative; overflow: hidden;
-    }
-    .hero-bg-glow {
-      position: absolute; top: 10%; left: 50%;
-      transform: translateX(-50%);
-      width: 900px; height: 700px;
-      background: radial-gradient(ellipse, rgba(0,229,255,0.11) 0%, rgba(0,229,255,0.04) 40%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
-      background-size: 56px 56px;
-      mask-image: radial-gradient(ellipse at 50% 40%, black 20%, transparent 72%);
-      pointer-events: none;
-    }
-    .hero-pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--cyan-dim);
-      border: 1px solid rgba(0,229,255,0.18);
-      border-radius: 100px; padding: 6px 16px;
-      font-size: 13px; color: var(--cyan); font-weight: 500;
-      margin-bottom: 36px;
-      animation: up .8s ease both;
-    }
-    .pulse-dot {
-      width: 6px; height: 6px; background: var(--cyan);
-      border-radius: 50%; animation: pdot 2s infinite;
-    }
-    @keyframes pdot {
-      0%,100% { opacity:1; transform:scale(1); }
-      50% { opacity:.3; transform:scale(.7); }
-    }
-    h1 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 800;
-      font-size: clamp(52px, 8.5vw, 96px);
-      line-height: 1.0; letter-spacing: -2.5px;
-      margin-bottom: 20px;
-      animation: up .8s .1s ease both;
-    }
-    h1 .accent {
-      display: block; color: var(--cyan);
-      text-shadow: 0 0 120px rgba(0,229,255,0.5), 0 0 40px rgba(0,229,255,0.3);
-    }
-    .hero-p {
-      font-size: clamp(16px, 2.2vw, 19px);
-      color: var(--muted); font-weight: 300;
-      max-width: 500px; margin-bottom: 48px;
-      animation: up .8s .2s ease both;
-    }
-    .hero-ctas {
-      display: flex; gap: 14px;
-      flex-wrap: wrap; justify-content: center;
-      animation: up .8s .3s ease both;
-    }
-    .btn-main {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: var(--cyan); color: #000;
-      border: none; border-radius: 100px;
-      padding: 14px 30px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700; font-size: 15px;
-      cursor: pointer; text-decoration: none;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .btn-main:hover { transform: translateY(-2px); box-shadow: 0 0 36px var(--cyan-glow); }
-    .btn-ghost {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: transparent; color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 100px; padding: 14px 30px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500; font-size: 15px;
-      cursor: pointer; text-decoration: none;
-      transition: border-color .2s, background .2s;
-    }
-    .btn-ghost:hover { border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.04); }
-
-    .hero-scroll {
-      position: absolute; bottom: 36px; left: 0; right: 0;
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      color: var(--muted); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
-      animation: up 1s .6s ease both;
-    }
-    .scroll-bar {
-      width: 1px; height: 44px;
-      background: linear-gradient(to bottom, var(--cyan), transparent);
-      animation: sbar 2.2s ease infinite;
-    }
-    @keyframes sbar {
-      0% { transform: scaleY(0); transform-origin: top; opacity:1; }
-      49% { transform: scaleY(1); transform-origin: top; opacity:1; }
-      50% { transform: scaleY(1); transform-origin: bottom; opacity:1; }
-      100% { transform: scaleY(0); transform-origin: bottom; opacity:0; }
     }
 
-    /* PHONE */
-    .phone-wrap {
-      display: flex; justify-content: center;
-      padding: 20px 24px 100px;
-    }
-    .phone {
-      width: 270px; height: 540px;
-      background: var(--bg3);
-      border: 1.5px solid rgba(255,255,255,0.09);
-      border-radius: 38px;
-      overflow: hidden; position: relative;
-      box-shadow:
-        0 40px 100px rgba(0,0,0,0.65),
-        0 0 0 1px rgba(255,255,255,0.04),
-        inset 0 1px 0 rgba(255,255,255,0.07);
-    }
-    .phone-notch {
-      position: absolute; top: 12px; left: 50%;
-      transform: translateX(-50%);
-      width: 72px; height: 20px;
-      background: #000; border-radius: 100px; z-index: 10;
-    }
-    .phone-body {
-      padding: 44px 14px 14px;
-      display: flex; flex-direction: column; gap: 10px;
-      height: 100%;
-    }
-    .stories {
-      display: flex; gap: 8px; overflow: hidden;
-    }
-    .story {
-      flex-shrink: 0;
-      width: 44px; height: 44px; border-radius: 50%;
-      border: 2px solid var(--cyan);
-      background: #1a2535;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px;
-    }
-    .story.new {
-      border-color: var(--muted); border-style: dashed;
-      font-size: 20px; color: var(--muted);
-    }
-    .ecard {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 11px; padding: 10px;
-      position: relative; overflow: hidden;
-    }
-    .ecard::before {
-      content:''; position:absolute; top:0; left:0; right:0; height:2px;
-      background: linear-gradient(90deg, var(--cyan), transparent);
-    }
-    .ecard-img {
-      width:100%; height:68px;
-      background: linear-gradient(135deg,#1a2535,#0c1824);
-      border-radius: 7px; margin-bottom: 7px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px;
-    }
-    .ecard-title { font-size: 11px; font-weight: 600; margin-bottom: 5px; }
-    .ecard-row {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 9px; color: var(--muted);
-    }
-    .badge {
-      font-size: 8.5px; padding: 2px 7px;
-      border-radius: 100px; font-weight: 700;
-    }
-    .badge.open {
-      background: rgba(0,229,255,0.1); color: var(--cyan);
-      border: 1px solid rgba(0,229,255,0.2);
-    }
-    .badge.req {
-      background: rgba(255,160,50,0.1); color: #FFB347;
-      border: 1px solid rgba(255,160,50,0.2);
-    }
-    .phone-glow-el {
-      position: absolute; bottom: -30px; left: 50%;
-      transform: translateX(-50%);
-      width: 220px; height: 120px;
-      background: radial-gradient(ellipse, rgba(0,229,255,0.28), transparent 70%);
-      pointer-events: none;
-    }
-    .phone {
-      animation: float 4s ease-in-out infinite;
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    header h1 {
+      font-size: 48px;
+      margin: 0;
     }
 
-    /* SECTIONS */
-    .sec {
-      max-width: 1080px; margin: 0 auto;
-      padding: 90px 24px;
-    }
-    .tag-label {
-      display: inline-block;
-      font-size: 11.5px; font-weight: 600;
-      letter-spacing: 2px; text-transform: uppercase;
-      color: var(--cyan); margin-bottom: 14px;
-    }
-    h2 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 800;
-      font-size: clamp(30px, 5vw, 50px);
-      line-height: 1.15; letter-spacing: -0.5px;
-      margin-bottom: 18px;
-    }
-    .sec-sub {
-      font-size: 17px; color: var(--muted);
-      font-weight: 300; max-width: 480px; margin-bottom: 56px;
+    header p {
+      opacity: 0.7;
+      margin-top: 10px;
     }
 
-    /* STEPS */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-    .step {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 28px;
-      transition: border-color .3s, transform .3s;
-      position: relative; overflow: hidden;
-    }
-    .step::after {
-      content:''; position:absolute; inset:0;
-      background: linear-gradient(135deg, var(--cyan-dim), transparent);
-      opacity:0; transition: opacity .3s;
-    }
-    .step:hover { border-color: rgba(0,229,255,0.22); transform: translateY(-4px); }
-    .step:hover::after { opacity: 1; }
-    .step-n {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 42px; font-weight: 800;
-      color: rgba(0,229,255,0.12); line-height: 1;
-      margin-bottom: 14px;
-    }
-    .step-ico { font-size: 26px; margin-bottom: 10px; }
-    .step h3 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 18px; font-weight: 700; margin-bottom: 8px;
-    }
-    .step p { color: var(--muted); font-size: 14px; line-height: 1.65; }
-
-    /* TWO TYPES */
-    .types-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .type-card {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 32px;
-      position: relative; overflow: hidden;
-      transition: transform .3s, border-color .3s;
-    }
-    .type-card:hover { transform: translateY(-3px); }
-    .type-card.open-type:hover { border-color: rgba(0,229,255,0.25); }
-    .type-card.req-type:hover { border-color: rgba(255,179,71,0.25); }
-    .type-card::before {
-      content:''; position:absolute; top:0; left:0; right:0; height:3px;
-    }
-    .type-card.open-type::before { background: linear-gradient(90deg, var(--cyan), transparent); }
-    .type-card.req-type::before { background: linear-gradient(90deg, #FFB347, transparent); }
-    .type-icon { font-size: 32px; margin-bottom: 16px; }
-    .type-card h3 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 20px; font-weight: 700; margin-bottom: 10px;
-    }
-    .type-card p { color: var(--muted); font-size: 15px; line-height: 1.65; }
-    .type-tag {
-      display: inline-block; margin-top: 20px;
-      font-size: 12px; font-weight: 700; padding: 4px 14px;
-      border-radius: 100px;
-    }
-    .open-type .type-tag {
-      background: rgba(0,229,255,0.1); color: var(--cyan);
-      border: 1px solid rgba(0,229,255,0.2);
-    }
-    .req-type .type-tag {
-      background: rgba(255,179,71,0.1); color: #FFB347;
-      border: 1px solid rgba(255,179,71,0.2);
+    .form {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
     }
 
-    /* MAP */
-    .map-sec {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    input[type="email"] {
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      width: 250px;
+      outline: none;
     }
-    .map-inner {
-      max-width: 1080px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 72px; align-items: center;
-      padding: 100px 24px;
+
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      opacity: 0.8;
     }
-    .map-mock {
-      width: 100%; aspect-ratio: 1;
-      background: #080F18;
-      border-radius: 22px; border: 1px solid var(--border);
-      position: relative; overflow: hidden;
-    }
-    .map-mock::before {
-      content:''; position:absolute; inset:0;
-      background-image:
-        linear-gradient(rgba(0,229,255,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,229,255,0.035) 1px, transparent 1px);
-      background-size: 44px 44px;
-    }
-    .map-mock svg { position: absolute; inset: 0; width:100%; height:100%; }
-    .map-marker {
-      position: absolute;
-      display: flex; flex-direction: column; align-items: center;
+
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #ffffff;
+      color: #000;
       cursor: pointer;
-    }
-    .pin {
-      width: 34px; height: 34px;
-      border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
-      display: flex; align-items: center; justify-content: center;
-      transition: transform .2s;
-    }
-    .map-marker:hover .pin { transform: rotate(-45deg) scale(1.15); }
-    .pin-i { transform: rotate(45deg); font-size: 14px; }
-    .pin-lbl {
-      margin-top: 3px;
-      background: rgba(8,11,16,0.92);
-      border: 1px solid var(--border); border-radius: 100px;
-      padding: 2px 9px; font-size: 9px; font-weight: 600;
-      color: var(--text); white-space: nowrap;
-    }
-    .pin.c { background: var(--cyan); box-shadow: 0 0 18px var(--cyan-glow); }
-    .pin.o { background: #FFB347; box-shadow: 0 0 18px rgba(255,179,71,0.35); }
-    .pin.g { background: #69E87A; box-shadow: 0 0 18px rgba(105,232,122,0.35); }
-
-    /* TICKET */
-    .ticket-sec {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 72px; align-items: center;
-    }
-    .ticket-card {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 20px; padding: 28px;
-      position: relative; overflow: hidden;
-    }
-    .ticket-card::before {
-      content:''; position:absolute; top:0; left:0; right:0; height:4px;
-      background: linear-gradient(90deg, var(--cyan), #0090FF, var(--cyan));
-    }
-    .ticket-top {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      margin-bottom: 20px;
-    }
-    .ticket-name-big {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 17px; font-weight: 800; margin-bottom: 3px;
-    }
-    .ticket-meta-sm { font-size: 12px; color: var(--muted); }
-    .ticket-status-badge {
-      font-size: 11px; font-weight: 700; padding: 4px 12px;
-      border-radius: 100px;
-      background: rgba(0,229,255,0.1); color: var(--cyan);
-      border: 1px solid rgba(0,229,255,0.2);
-    }
-    .ticket-dashed {
-      border: none; border-top: 1.5px dashed rgba(255,255,255,0.1);
-      margin: 16px 0;
-    }
-    .qr {
-      width: 90px; height: 90px;
-      background: #fff; border-radius: 8px; padding: 8px;
-      margin: 0 auto 16px;
-      display: grid; grid-template-columns: repeat(9,1fr); gap: 2px;
-    }
-    .qr-c { border-radius: 1px; }
-    .ticket-footer-row {
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .ticket-user b { display:block; font-weight:600; font-size:13px; }
-    .ticket-user span { font-size: 11px; color: var(--muted); }
-    .ticket-id { font-size: 10px; color: var(--muted); font-family: monospace; }
-
-    /* ANY PLAN */
-    .any-sec {
-      text-align: center;
-      position: relative; overflow: hidden;
-    }
-    .any-sec::before {
-      content:''; position:absolute; top:50%; left:50%;
-      transform: translate(-50%,-50%);
-      width: 700px; height: 350px;
-      background: radial-gradient(ellipse, rgba(0,229,255,0.055), transparent 70%);
-      pointer-events:none;
-    }
-    .tags {
-      display: flex; flex-wrap: wrap; gap: 10px;
-      justify-content: center; max-width: 760px;
-      margin: 44px auto 0;
-    }
-    .etag {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 100px; padding: 9px 18px;
-      font-size: 14px; color: var(--muted);
-      transition: all .25s; cursor: default;
-    }
-    .etag:hover {
-      color: var(--text); border-color: rgba(0,229,255,0.22);
-      background: var(--cyan-dim);
-    }
-    .etag.hi {
-      color: var(--cyan); border-color: rgba(0,229,255,0.2);
-      background: var(--cyan-dim);
-    }
-
-    /* WAITLIST */
-    .waitlist {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      padding: 100px 24px; text-align: center;
-      position: relative; overflow: hidden;
-    }
-    .waitlist::before {
-      content: ''; position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 800px; height: 400px;
-      background: radial-gradient(ellipse, rgba(0,229,255,0.08), transparent 65%);
+      font-weight: bold;
+      opacity: 0.5;
       pointer-events: none;
-    }
-    .waitlist-inner { max-width: 520px; margin: 0 auto; }
-    .waitlist h2 { margin-bottom: 14px; }
-    .waitlist p { color: var(--muted); font-size: 17px; margin-bottom: 38px; }
-    .wl-form {
-      display: flex; gap: 10px;
-      max-width: 420px; margin: 0 auto;
-    }
-    .wl-input {
-      flex:1; background: var(--bg3);
-      border: 1px solid var(--border); border-radius: 100px;
-      padding: 13px 20px; color: var(--text);
-      font-family: 'DM Sans', sans-serif; font-size: 14px;
-      outline: none; transition: border-color .2s;
-    }
-    .wl-input::placeholder { color: var(--muted); }
-    .wl-input:focus { border-color: rgba(0,229,255,0.35); }
-    .wl-btn {
-      background: var(--cyan); color: #000; border: none;
-      border-radius: 100px; padding: 13px 22px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 700; font-size: 14px;
-      cursor: pointer; white-space: nowrap;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .wl-btn:hover { transform: translateY(-1px); box-shadow: 0 0 28px var(--cyan-glow); }
-    .wl-note { font-size: 12px; color: var(--muted); margin-top: 14px; }
-    .wl-success {
-      display: none; color: var(--cyan);
-      font-size: 15px; font-weight: 500;
-      padding: 14px; background: var(--cyan-dim);
-      border: 1px solid rgba(0,229,255,0.2);
-      border-radius: 12px; margin-top: 16px;
+      transition: 0.2s;
     }
 
-    /* HUMAN CHECKBOX */
-    .wl-check-wrap {
-      display: inline-flex; align-items: center; gap: 12px;
-      margin-top: 18px; cursor: pointer;
-      user-select: none;
-    }
-    .wl-check-wrap input[type="checkbox"] { display: none; }
-    .wl-checkmark {
-      width: 22px; height: 22px; flex-shrink: 0;
-      background: var(--bg3);
-      border: 1.5px solid var(--border);
-      border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-      transition: border-color .2s, background .2s;
-      position: relative;
-    }
-    .wl-checkmark::after {
-      content: '';
-      width: 6px; height: 11px;
-      border: 2px solid var(--cyan);
-      border-top: none; border-left: none;
-      transform: rotate(45deg) scale(0);
-      transition: transform .2s cubic-bezier(.34,1.56,.64,1);
-      margin-top: -2px;
-    }
-    .wl-check-wrap input:checked ~ .wl-checkmark {
-      background: var(--cyan-dim);
-      border-color: rgba(0,229,255,0.5);
-    }
-    .wl-check-wrap input:checked ~ .wl-checkmark::after {
-      transform: rotate(45deg) scale(1);
-    }
-    .wl-check-label {
-      font-size: 14px; color: var(--muted);
-      transition: color .2s;
-    }
-    .wl-check-wrap:hover .wl-check-label { color: var(--text); }
-    .wl-check-wrap:hover .wl-checkmark { border-color: rgba(0,229,255,0.3); }
-
-    .wl-btn:disabled {
-      opacity: 0.38;
-      cursor: not-allowed;
-      transform: none !important;
-      box-shadow: none !important;
+    button.enabled {
+      opacity: 1;
+      pointer-events: auto;
     }
 
-    /* FOOTER */
     footer {
-      padding: 36px 48px;
-      border-top: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 16px;
+      padding: 20px;
+      border-top: 1px solid #2a2a2a;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      font-size: 14px;
     }
-    .f-logo {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 800; font-size: 17px; color: var(--text);
-    }
-    .f-logo em { color: var(--cyan); font-style:normal; }
-    .f-copy { font-size: 13px; color: var(--muted); }
-    .f-links { display:flex; gap:22px; list-style:none; }
-    .f-links a { font-size:13px; color: var(--muted); text-decoration:none; transition: color .2s; }
-    .f-links a:hover { color: var(--text); }
 
-    /* ANIMATIONS */
-    @keyframes up {
-      from { opacity:0; transform:translateY(22px); }
-      to   { opacity:1; transform:translateY(0); }
+    footer a {
+      color: #ffffff;
+      text-decoration: none;
+      opacity: 0.7;
     }
-    .rv { opacity:0; transform:translateY(28px); transition: opacity .65s ease, transform .65s ease; }
-    .rv.on { opacity:1; transform:translateY(0); }
-    .d1 { transition-delay: .1s; }
-    .d2 { transition-delay: .2s; }
-    .d3 { transition-delay: .3s; }
 
-    /* RESPONSIVE */
-    @media (max-width: 740px) {
-      nav { padding: 16px 20px; }
-      .nav-links { display:none; }
-      h1 { letter-spacing:-1.5px; }
-      .types-grid { grid-template-columns: 1fr; }
-      .map-inner { grid-template-columns:1fr; gap:40px; padding:60px 24px; }
-      .ticket-sec { grid-template-columns:1fr; gap:40px; }
-      footer { flex-direction:column; text-align:center; padding:28px 24px; }
-      .f-links { flex-wrap:wrap; justify-content:center; }
-      .wl-form { flex-direction:column; }
+    footer a:hover {
+      opacity: 1;
     }
   </style>
-
 </head>
+
 <body>
+  <div class="container">
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="logo">Humans<em>.</em></a>
-  <ul class="nav-links">
-    <li><a href="#como">Cómo funciona</a></li>
-    <li><a href="#tipos">Tipos de evento</a></li>
-    <li><a href="#mapa">Mapa</a></li>
-  </ul>
-  <a href="#waitlist" class="nav-btn">Quiero acceso →</a>
-</nav>
+    <header>
+      <h1>Humans</h1>
+      <p>La vida pasa afuera. Y está pasando ahora.</p>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg-glow"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-pill">
-    <span class="pulse-dot"></span>
-    Próximamente en tu ciudad
-  </div>
-  <h1>
-    La vida pasa
-    <span class="accent">afuera.</span>
-  </h1>
-  <p class="hero-slogan2" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:clamp(18px,2.8vw,28px);color:var(--muted);letter-spacing:-0.5px;margin-bottom:24px;animation:up .8s .18s ease both;">
-    Encontralo o crealo.
-  </p>
-  <p class="hero-p">
-    Descubrí eventos reales cerca tuyo. Conocé gente.<br>Sin algoritmos — solo planes y personas.
-  </p>
-  <div class="hero-ctas">
-    <a href="#waitlist" class="btn-main">Quiero acceso anticipado</a>
-    <a href="#como" class="btn-ghost">Ver cómo funciona</a>
-  </div>
-  <div class="hero-scroll">
-    <span>scroll</span>
-    <div class="scroll-bar"></div>
-  </div>
-</section>
+      <div class="form">
+        <input type="email" id="email" placeholder="Tu email" />
 
-<!-- PHONE MOCKUP -->
-<div class="phone-wrap">
-  <div style="position:relative">
-    <div class="phone">
-      <div class="phone-notch"></div>
-      <div class="phone-body">
-        <div class="stories">
-          <div class="story new">+</div>
-          <div class="story" style="background:linear-gradient(135deg,#1a3a4a,#0d2535);font-size:12px;font-weight:700;color:#00E5FF;">MA</div>
-          <div class="story" style="background:linear-gradient(135deg,#2a1a3a,#1a0d35);font-size:12px;font-weight:700;color:#a78bfa;">LG</div>
-          <div class="story" style="background:linear-gradient(135deg,#1a3a1a,#0d2510);font-size:12px;font-weight:700;color:#6ee7b7;">RP</div>
-          <div class="story" style="background:linear-gradient(135deg,#3a2a1a,#251a0d);font-size:12px;font-weight:700;color:#fbbf24;">JK</div>
+        <div class="checkbox-container">
+          <input type="checkbox" id="robotCheck" />
+          <label for="robotCheck">No soy un robot</label>
         </div>
-        <div class="ecard">
-          <div class="ecard-img">⚽</div>
-          <div class="ecard-title">Partido 5×5 — Parque Sur</div>
-          <div class="ecard-row">
-            <span>📍 500m</span><span>· Hoy 18:00</span>
-            <span class="badge open">Abierto</span>
-          </div>
-        </div>
-        <div class="ecard">
-          <div class="ecard-img">🎉</div>
-          <div class="ecard-title">Previa en Palermo · 20 cupos</div>
-          <div class="ecard-row">
-            <span>📍 1.2km</span><span>· Hoy 22:00</span>
-            <span class="badge req">Solicitud</span>
-          </div>
-        </div>
-        <div class="ecard">
-          <div class="ecard-img">🎸</div>
-          <div class="ecard-title">Jam session · Bar Roma</div>
-          <div class="ecard-row">
-            <span>📍 800m</span><span>· Sáb 20:30</span>
-            <span class="badge open">Abierto</span>
-          </div>
-        </div>
+
+        <button id="submitBtn">Anotarme</button>
       </div>
-    </div>
-    <div class="phone-glow-el"></div>
+    </header>
+
+    <footer>
+      <a href="/terminos.html">Términos</a>
+      <a href="/privacidad.html">Privacidad</a>
+      <a href="mailto:humansapp.oficial@gmail.com">Contacto</a>
+    </footer>
+
   </div>
-</div>
 
-<!-- HOW IT WORKS -->
-<div class="sec" id="como">
-  <span class="tag-label rv">Cómo funciona</span>
-  <h2 class="rv d1">Simple por diseño.</h2>
-  <p class="sec-sub rv d2">Sin pasos extra, sin formularios eternos. Ves algo que te copa y vas — o te anotás.</p>
-  <div class="steps">
-    <div class="step rv">
-      <div class="step-n">01</div>
-      <div class="step-ico">🗺️</div>
-      <h3>Explorá</h3>
-      <p>Feed de eventos o mapa interactivo. Cada evento muestra lugar, día y hora exactos.</p>
-    </div>
-    <div class="step rv d1">
-      <div class="step-n">02</div>
-      <div class="step-ico">✅</div>
-      <h3>Unite o solicitá</h3>
-      <p>Si es abierto, lo ves y vas directo. Si es por solicitud, pedís ingreso y el organizador decide.</p>
-    </div>
-    <div class="step rv d2">
-      <div class="step-n">03</div>
-      <div class="step-ico">🎟️</div>
-      <h3>Ticket QR</h3>
-      <p>Si el evento lo requiere y fuiste aceptado, recibís un ticket virtual con QR. Lo mostrás al llegar.</p>
-    </div>
-  </div>
-</div>
+  <script>
+    const emailInput = document.getElementById("email");
+    const checkbox = document.getElementById("robotCheck");
+    const button = document.getElementById("submitBtn");
 
-<!-- TWO TYPES -->
-<div class="sec" id="tipos" style="padding-top:0">
-  <span class="tag-label rv">Tipos de evento</span>
-  <h2 class="rv d1">Abierto o por solicitud.</h2>
-  <p class="sec-sub rv d2">El creador decide cómo manejar el ingreso.</p>
-  <div class="types-grid">
-    <div class="type-card open-type rv">
-      <div class="type-icon">🟢</div>
-      <h3>Abierto</h3>
-      <p>Lo ves en la app y vas. Sin pedir permiso, sin esperar nada. El lugar y la hora están ahí — el resto es tuyo.</p>
-      <span class="type-tag">Entrada libre</span>
-    </div>
-    <div class="type-card req-type rv d1">
-      <div class="type-icon">🔐</div>
-      <h3>Por solicitud</h3>
-      <p>Solicitás ingreso. Si el organizador acepta, recibís un ticket con código QR para mostrar al llegar al evento.</p>
-      <span class="type-tag">Requiere ticket QR</span>
-    </div>
-  </div>
-</div>
+    function validate() {
+      const emailValid = emailInput.value.includes("@");
+      const isChecked = checkbox.checked;
 
-<!-- MAP -->
-<div class="map-sec" id="mapa">
-  <div class="map-inner">
-    <div class="rv">
-      <span class="tag-label">Mapa interactivo</span>
-      <h2>Tu ciudad,<br>en tiempo real.</h2>
-      <p style="color:var(--muted); font-size:16px; line-height:1.75; margin-bottom:32px; max-width:380px;">
-        Cambiá al mapa y ves exactamente dónde está pasando todo. Markers en tiempo real, a metros de distancia.
-      </p>
-      <a href="#waitlist" class="btn-main">Quiero acceso anticipado</a>
-    </div>
-    <div class="map-mock rv d1">
-      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="0" y1="130" x2="400" y2="130" stroke="rgba(255,255,255,0.055)" stroke-width="7"/>
-        <line x1="0" y1="260" x2="400" y2="260" stroke="rgba(255,255,255,0.055)" stroke-width="7"/>
-        <line x1="130" y1="0" x2="130" y2="400" stroke="rgba(255,255,255,0.055)" stroke-width="7"/>
-        <line x1="260" y1="0" x2="260" y2="400" stroke="rgba(255,255,255,0.055)" stroke-width="7"/>
-        <line x1="0" y1="60" x2="200" y2="200" stroke="rgba(255,255,255,0.03)" stroke-width="4"/>
-        <line x1="80" y1="0" x2="280" y2="400" stroke="rgba(255,255,255,0.03)" stroke-width="4"/>
-        <rect x="30" y="30" width="65" height="45" rx="3" fill="rgba(255,255,255,0.025)"/>
-        <rect x="155" y="20" width="75" height="55" rx="3" fill="rgba(255,255,255,0.025)"/>
-        <rect x="285" y="30" width="80" height="70" rx="3" fill="rgba(255,255,255,0.025)"/>
-        <rect x="20" y="155" width="60" height="65" rx="3" fill="rgba(255,255,255,0.025)"/>
-        <rect x="160" y="160" width="65" height="60" rx="3" fill="rgba(255,255,255,0.025)"/>
-        <rect x="290" y="148" width="75" height="78" rx="3" fill="rgba(255,255,255,0.025)"/>
-        <rect x="30" y="290" width="75" height="70" rx="3" fill="rgba(255,255,255,0.025)"/>
-        <rect x="165" y="280" width="65" height="80" rx="3" fill="rgba(255,255,255,0.025)"/>
-        <rect x="285" y="285" width="80" height="70" rx="3" fill="rgba(255,255,255,0.025)"/>
-        <circle cx="155" cy="115" r="16" fill="rgba(0,229,255,0.07)" stroke="rgba(0,229,255,0.25)" stroke-width="1">
-          <animate attributeName="r" values="14;24;14" dur="3s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values=".7;0;.7" dur="3s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="300" cy="210" r="14" fill="rgba(255,179,71,0.07)" stroke="rgba(255,179,71,0.25)" stroke-width="1">
-          <animate attributeName="r" values="12;22;12" dur="3.5s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values=".7;0;.7" dur="3.5s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="80" cy="300" r="12" fill="rgba(105,232,122,0.07)" stroke="rgba(105,232,122,0.25)" stroke-width="1">
-          <animate attributeName="r" values="10;20;10" dur="4s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values=".7;0;.7" dur="4s" repeatCount="indefinite"/>
-        </circle>
-      </svg>
-      <div class="map-marker" style="left:130px; top:88px">
-        <div class="pin c"><span class="pin-i">⚽</span></div>
-        <span class="pin-lbl">Partido 5×5</span>
-      </div>
-      <div class="map-marker" style="left:268px; top:190px">
-        <div class="pin o"><span class="pin-i">🎉</span></div>
-        <span class="pin-lbl">Previa · solicitud</span>
-      </div>
-      <div class="map-marker" style="left:56px; top:278px">
-        <div class="pin g"><span class="pin-i">🎸</span></div>
-        <span class="pin-lbl">Jam session</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- TICKET -->
-<div class="sec" style="padding-top:90px">
-  <div class="ticket-sec">
-    <div class="rv">
-      <span class="tag-label">Ticket virtual</span>
-      <h2>Tu entrada<br>en el celular.</h2>
-      <p style="color:var(--muted); font-size:16px; line-height:1.75; max-width:380px;">
-        Cuando un organizador te acepta en un evento por solicitud, recibís un ticket con QR único en la app. Lo mostrás al llegar. Sin apps extra, sin papel.
-      </p>
-    </div>
-    <div class="ticket-card rv d1">
-      <div class="ticket-top">
-        <div>
-          <div class="ticket-name-big">Previa en Palermo</div>
-          <div class="ticket-meta-sm">Sábado 29 · 22:00 · Av. Santa Fe 3200</div>
-        </div>
-        <span class="ticket-status-badge">Confirmado</span>
-      </div>
-      <hr class="ticket-dashed"/>
-      <div class="qr" id="qr"></div>
-      <hr class="ticket-dashed"/>
-      <div class="ticket-footer-row">
-        <div class="ticket-user">
-          <b>Martín García</b>
-          <span>1 persona · entrada general</span>
-        </div>
-        <span class="ticket-id">#HU-20941</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ANY PLAN -->
-<div class="sec any-sec rv" style="padding-top:0; text-align:center">
-  <span class="tag-label">Sin límites</span>
-  <h2>Cualquier plan.<br>Cualquier persona.</h2>
-  <p style="color:var(--muted); font-size:17px; max-width:460px; margin:0 auto;">
-    Humans no tiene categorías. La libertad de crear y encontrar eventos es absoluta.
-  </p>
-  <div class="tags">
-    <span class="etag hi">⚽ Fútbol en el parque</span>
-    <span class="etag">🎸 Jam session</span>
-    <span class="etag hi">🎉 Previas y fiestas</span>
-    <span class="etag">🌿 Picnic espontáneo</span>
-    <span class="etag">🏀 Basketball 3×3</span>
-    <span class="etag hi">🎨 Arte en vivo</span>
-    <span class="etag">🍕 Cena entre desconocidos</span>
-    <span class="etag">🎮 Torneo gamer</span>
-    <span class="etag hi">🧘 Yoga al aire libre</span>
-    <span class="etag">🎤 Karaoke improvisado</span>
-    <span class="etag">🚴 Salida en bici</span>
-    <span class="etag hi">📸 Fotoclub urbano</span>
-    <span class="etag">🎲 Juegos de mesa</span>
-    <span class="etag">☕ Meet up de lo que sea</span>
-  </div>
-</div>
-
-<!-- WAITLIST -->
-<div class="waitlist" id="waitlist">
-  <div class="waitlist-inner">
-    <span class="tag-label rv">Acceso anticipado</span>
-    <h2 class="rv d1">Sé de los primeros.</h2>
-    <p class="rv d2">Dejá tu mail y te avisamos cuando Humans llegue a tu ciudad.</p>
-    <div class="wl-form rv d3">
-      <input class="wl-input" type="email" id="wl-email" placeholder="tu@mail.com" />
-      <button class="wl-btn" onclick="joinWaitlist()" id="wl-submit" disabled>Anotarme</button>
-    </div>
-    <label class="wl-check-wrap rv">
-      <input type="checkbox" id="wl-human" onchange="toggleSubmit()" />
-      <span class="wl-checkmark"></span>
-      <span class="wl-check-label">No soy un robot</span>
-    </label>
-    <div class="wl-success" id="wl-ok">🎉 ¡Listo! Te avisamos cuando estemos listos.</div>
-    <p class="wl-note rv">Sin spam. Solo te escribimos cuando la app esté lista.</p>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <span class="f-logo">Humans<em>.</em></span>
-  <p class="f-copy">© 2026 Humans. Todos los derechos reservados.</p>
-  <ul class="f-links">
-    <li><a href="https://instagram.com/humans_app" target="_blank" rel="noopener">Instagram</a></li>
-    <li><a href="./privacidad.html">Privacidad</a></li>
-    <li><a href="./terminos.html">Términos</a></li>
-    <li><a href="mailto:humansapp.oficial@gmail.com" target="_blank">Contacto</a></li>
-  </ul>
-</footer>
-
-<script>
-  // Reveal on scroll
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.rv').forEach(el => obs.observe(el));
-
-  // QR pattern
-  (function() {
-    const qr = document.getElementById('qr');
-    if (!qr) return;
-    const p = [
-      1,1,1,1,1,1,1,0,1,
-      1,0,0,0,0,0,1,0,0,
-      1,0,1,1,1,0,1,0,1,
-      1,0,1,1,1,0,1,0,0,
-      1,0,0,0,0,0,1,0,1,
-      1,1,1,1,1,1,1,0,0,
-      0,0,0,0,0,0,0,0,1,
-      1,0,1,0,1,1,0,1,0,
-      0,1,0,1,1,0,1,0,1,
-    ];
-    p.forEach(v => {
-      const d = document.createElement('div');
-      d.className = 'qr-c';
-      d.style.background = v ? '#000' : '#fff';
-      qr.appendChild(d);
-    });
-  })();
-
-  // Toggle submit button based on checkbox
-  function toggleSubmit() {
-    const checked = document.getElementById('wl-human').checked;
-    document.getElementById('wl-submit').disabled = !checked;
-  }
-
-  // Waitlist
-  async function joinWaitlist() {
-    const input = document.getElementById('wl-email');
-    const val = input.value.trim();
-    const checked = document.getElementById('wl-human').checked;
-
-    if (!val || !val.includes('@')) {
-      input.style.borderColor = 'rgba(255,80,80,0.5)';
-      setTimeout(() => input.style.borderColor = '', 1500);
-      return;
-    }
-    if (!checked) return;
-
-    const btn = document.getElementById('wl-submit');
-    btn.textContent = 'Enviando...';
-    btn.disabled = true;
-
-    try {
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: val })
-      });
-      if (res.ok) {
-        document.querySelector('.wl-form').style.display = 'none';
-        document.querySelector('.wl-check-wrap').style.display = 'none';
-        document.querySelector('.wl-note').style.display = 'none';
-        document.getElementById('wl-ok').style.display = 'block';
+      if (emailValid && isChecked) {
+        button.classList.add("enabled");
       } else {
-        btn.textContent = 'Anotarme';
-        btn.disabled = false;
-        alert('Algo salió mal. Intentá de nuevo.');
+        button.classList.remove("enabled");
       }
-    } catch(e) {
-      btn.textContent = 'Anotarme';
-      btn.disabled = false;
-      alert('Algo salió mal. Intentá de nuevo.');
     }
-  }
 
-  // Nav active highlight on scroll
-  const navAs = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY + 120;
-    navAs.forEach(a => {
-      const href = a.getAttribute('href');
-      const sec = document.querySelector(href);
-      if (!sec) return;
-      if (sec.offsetTop <= y && sec.offsetTop + sec.offsetHeight > y) {
-        navAs.forEach(x => x.style.color = '');
-        a.style.color = 'var(--cyan)';
-      } else {
-        a.style.color = '';
-      }
+    emailInput.addEventListener("input", validate);
+    checkbox.addEventListener("change", validate);
+
+    button.addEventListener("click", () => {
+      if (!button.classList.contains("enabled")) return;
+
+      alert("Te anotaste 👀");
+      emailInput.value = "";
+      checkbox.checked = false;
+      validate();
     });
-  });
-
-  document.getElementById('wl-email').addEventListener('keydown', e => {
-    if (e.key === 'Enter') joinWaitlist();
-  });
-</script>
+  </script>
 </body>
 </html>
