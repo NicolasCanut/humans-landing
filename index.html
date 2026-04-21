@@ -1260,6 +1260,12 @@
     gap: 48px; /* 🔥 control real del espacio */
   }
 
+  .btn-main,
+  .btn-ghost {
+    padding: 16px 36px;
+    font-size: 16px;
+  }
+
   .side-copy-right,
   .side-copy-key {
     transform: translateY(100px);
@@ -1321,6 +1327,21 @@
 @media (max-width: 640px) {
   .phone-stage {
     gap: 48px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .btn-main,
+  .btn-ghost {
+    width: 92%;
+    max-width: 360px;
+
+    padding: 18px 24px;
+    font-size: 17px;
   }
 
   .hero::before,
