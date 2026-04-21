@@ -1,31 +1,51 @@
 <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-  <!-- Fondo -->
-  <rect width="64" height="64" rx="14" fill="#080B10"/>
 
-  <!-- H -->
-  <text
-    x="0"
-    y="0"
-    text-anchor="middle"
-    dominant-baseline="middle"
-    fill="#FFFFFF"
-    font-size="38"
-    font-family="Plus Jakarta Sans, Inter, Arial, sans-serif"
-    font-weight="800"
-    style="paint-order: stroke; stroke: rgba(0,0,0,0.35); stroke-width: 1;">
-    H
-  </text>
+  <!-- Definimos filtro de sombra -->
+  <defs>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-color="rgba(0,0,0,0.6)" />
+    </filter>
+  </defs>
 
-  <!-- Dot online -->
-  <circle 
-    cx="44" 
-    cy="16" 
-    r="4" 
-    fill="#00E5FF">
-    <animate 
-      attributeName="opacity" 
-      values="1;0.5;1" 
-      dur="2s" 
-      repeatCount="indefinite"/>
-  </circle>
+  <!-- Grupo centrado -->
+  <g transform="translate(32,36)">
+
+    <!-- H con sombra -->
+    <text
+      x="0"
+      y="0"
+      text-anchor="middle"
+      dominant-baseline="middle"
+      font-size="40"
+      font-family="Plus Jakarta Sans, Inter, Arial, sans-serif"
+      font-weight="800"
+      fill="#FFFFFF"
+      filter="url(#shadow)">
+      H
+    </text>
+
+    <!-- Dot arriba -->
+    <circle
+      cx="14"
+      cy="-18"
+      r="5"
+      fill="#00E5FF">
+
+      <!-- Pulse -->
+      <animate
+        attributeName="opacity"
+        values="1;0.45;1"
+        dur="1.6s"
+        repeatCount="indefinite"/>
+
+      <animate
+        attributeName="r"
+        values="5;4.2;5"
+        dur="1.6s"
+        repeatCount="indefinite"/>
+        
+    </circle>
+
+  </g>
+
 </svg>
