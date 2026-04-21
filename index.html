@@ -1185,14 +1185,14 @@
     
     .side-copy-left {
       right: 100%;
-      margin-right: 70px;
+      margin-right: clamp(60px, 6vw, 120px);
       align-items: flex-end;
       text-align: right;
     }
     
     .side-copy-right {
       left: 100%;
-      margin-left: 70px;
+      margin-left:  clamp(60px, 6vw, 120px);
       align-items: flex-start;
       text-align: left;
     }
