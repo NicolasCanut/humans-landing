@@ -1172,6 +1172,9 @@
       top: 50%;
       transform: translateY(-50%);
       width: 300px;
+
+      align-items: center;   /* centra la primera línea */
+      gap: 2px;
     
       display: flex;
       flex-direction: column;
@@ -1203,6 +1206,23 @@
     .side-text span {
       color: rgba(255,255,255,0.92);
       text-shadow: none;
+    }
+      
+    /* empuje hacia el teléfono */
+    .side-left .emphasis {
+      align-self: flex-end;   /* se corre hacia el celu */
+    }
+    
+    .side-right .emphasis {
+      align-self: flex-start; /* se corre hacia el celu */
+    }
+    
+    /* neon SOLO en esas palabras */
+    .emphasis {
+      color: #00E5FF;
+      text-shadow:
+        0 0 24px rgba(0,229,255,0.35),
+        0 0 10px rgba(0,229,255,0.25);
     }
     
     .neon {
@@ -1335,15 +1355,14 @@
   <!-- PHONE MOCKUP -->
   <div class="phone-wrap">
     <div class="phone-stage">
-      <!-- 👇 IZQUIERDA -->
       <div class="side-text side-left">
         <span>La vida pasa</span>
-        <span>afuera.</span>
+        <span class="emphasis">afuera.</span>
       </div>
       
       <div class="side-text side-right">
         <span>Y está pasando</span>
-        <span>ahora.</span>
+        <span class="emphasis">ahora.</span>
       </div>
       <div class="phone">
         <div class="phone-notch"></div>
