@@ -1167,6 +1167,33 @@
 
     .f-links a:hover { color: var(--text); }
 
+    .side-text {
+      position: absolute;
+      bottom: 120px;
+      width: 40%;
+      font-family: 'Plus Jakarta Sans';
+      font-weight: 700;
+      font-size: clamp(18px, 2vw, 26px);
+      color: rgba(255,255,255,0.2);
+      line-height: 1.3;
+      pointer-events: none;
+    }
+    
+    .side-left {
+      left: 5%;
+      text-align: left;
+    }
+    
+    .side-right {
+      right: 5%;
+      text-align: right;
+    }
+
+    .neon {
+      color: var(--cyan);
+      text-shadow: 0 0 20px rgba(0,229,255,0.25);
+    }
+
     /* ANIMATIONS */
     @keyframes up {
       from { opacity:0; transform:translateY(22px); }
@@ -1278,11 +1305,6 @@
       <span class="hero-title-accent">online</span>
     </h1>
 
-    <p class="hero-slogan2">
-      La vida pasa afuera.<br/>
-      Y está pasando ahora.
-    </p>
-
     <div class="hero-ctas">
       <a href="#waitlist" class="btn-main">Quiero acceso anticipado</a>
       <a href="#como" class="btn-ghost">Ver cómo funciona</a>
@@ -1291,6 +1313,16 @@
     <div class="hero-scroll">
       <span>scroll</span>
       <div class="scroll-bar"></div>
+    </div>
+
+    <div class="side-text side-left">
+      La vida pasa<br/>
+      <span class="neon">AFUERA</span>
+    </div>
+    
+    <div class="side-text side-right">
+      Y está pasando<br/>
+      <span class="neon">AHORA</span>
     </div>
   </section>
 
