@@ -1175,7 +1175,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 320px;
+  width: 340px;
   display: flex;
   flex-direction: column;
   pointer-events: none;
@@ -1196,7 +1196,7 @@
 }
 
 .side-copy-line {
-  font-size: clamp(36px, 3vw, 52px);
+  font-size: clamp(38px, 3.2vw, 56px);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -1.8px;
@@ -1213,16 +1213,16 @@
 }
 
 .side-copy-key {
-  margin-top: 6px;
-  font-size: clamp(48px, 4vw, 72px);
+  margin-top: 8px;
+  font-size: clamp(52px, 4.2vw, 78px);
   font-weight: 800;
   line-height: 0.9;
-  letter-spacing: -2.4px;
+  letter-spacing: -2.6px;
   color: var(--cyan);
   text-shadow:
-    0 0 20px rgba(0, 229, 255, 0.20),
-    0 0 42px rgba(0, 229, 255, 0.22),
-    0 0 82px rgba(0, 229, 255, 0.16);
+    0 0 16px rgba(0, 229, 255, 0.18),
+    0 0 34px rgba(0, 229, 255, 0.22),
+    0 0 68px rgba(0, 229, 255, 0.16);
   text-wrap: balance;
 }
 
@@ -1238,29 +1238,89 @@
 
 @media (max-width: 1400px) {
   .side-copy {
-    width: 260px;
+    width: 280px;
   }
 
   .side-copy-left {
-    right: calc(100% + 70px);
+    right: calc(100% + 80px);
   }
 
   .side-copy-right {
-    left: calc(100% + 70px);
+    left: calc(100% + 80px);
   }
 
   .side-copy-line {
-    font-size: clamp(24px, 2.1vw, 34px);
+    font-size: clamp(28px, 2.4vw, 40px);
   }
 
   .side-copy-key {
-    font-size: clamp(32px, 2.7vw, 46px);
+    font-size: clamp(40px, 3.2vw, 56px);
   }
 }
 
 @media (max-width: 1180px) {
+  .phone-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
   .side-copy {
-    display: none;
+    position: static;
+    transform: none;
+    width: auto;
+    max-width: 320px;
+  }
+
+  .side-copy-left,
+  .side-copy-right {
+    right: auto;
+    left: auto;
+    margin: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .side-copy-left .side-copy-line,
+  .side-copy-right .side-copy-line {
+    transform: none;
+  }
+
+  .side-copy-left .side-copy-key,
+  .side-copy-right .side-copy-key {
+    align-self: center;
+    transform: none;
+  }
+
+  .side-copy-line {
+    font-size: clamp(24px, 6vw, 34px);
+    line-height: 1;
+  }
+
+  .side-copy-key {
+    font-size: clamp(34px, 8vw, 48px);
+    line-height: 0.95;
+  }
+}
+
+@media (max-width: 640px) {
+  .phone-stage {
+    gap: 20px;
+  }
+
+  .side-copy {
+    max-width: 260px;
+  }
+
+  .side-copy-line {
+    font-size: 22px;
+    letter-spacing: -1px;
+  }
+
+  .side-copy-key {
+    font-size: 36px;
+    letter-spacing: -1.6px;
   }
 }
 
@@ -1393,7 +1453,7 @@
         <div class="side-copy-line">La vida pasa</div>
         <div class="side-copy-key">afuera</div>
       </div>
-    
+      
       <div class="side-copy side-copy-right">
         <div class="side-copy-line">Y está pasando</div>
         <div class="side-copy-key">AHORA</div>
