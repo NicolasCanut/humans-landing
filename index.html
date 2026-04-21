@@ -1171,26 +1171,33 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 220px;
+      width: 300px;
+    
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 700;
-      font-size: clamp(20px, 1.8vw, 28px);
-      line-height: 1.1;
-      color: rgba(255,255,255,0.9);
+      font-weight: 800;
+      font-size: clamp(28px, 2.8vw, 42px);
+      line-height: 1.05;
+    
+      color: rgba(255,255,255,0.95);
+      letter-spacing: -1px;
+    
       pointer-events: none;
-      letter-spacing: -0.5px;
     }
     
     .side-left {
       right: 100%;
-      margin-right: 40px;
-      text-align: right;
+      margin-right: 60px;
+      text-align: center;
     }
     
     .side-right {
       left: 100%;
-      margin-left: 40px;
-      text-align: left;
+      margin-left: 60px;
+      text-align: center;
     }
     
     .side-text span {
