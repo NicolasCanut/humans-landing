@@ -221,9 +221,38 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2px;
+      text-align: center;
+      gap: 6px;
       margin-bottom: 20px;
       animation: up .8s .08s ease both;
+    }
+
+    .line1 {
+      font-size: clamp(20px, 2vw, 28px);
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: -0.5px;
+    }
+
+    .line2 {
+      font-size: clamp(32px, 3.5vw, 56px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1.5px;
+    }
+
+    .neon {
+      color: var(--cyan);
+    
+      text-shadow:
+        0 0 6px rgba(0, 229, 255, 0.35),
+        0 0 14px rgba(0, 229, 255, 0.25),
+        0 0 28px rgba(0, 229, 255, 0.18);
+    }
+
+    .line2 .neon {
+      font-weight: 900;
+      letter-spacing: -1px;
     }
 
     .hero-title-main,
@@ -1330,6 +1359,15 @@
     gap: 48px;
   }
 
+    .line1 {
+      font-size: 18px;
+    }
+  
+    .line2 {
+      font-size: clamp(28px, 7vw, 40px);
+      line-height: 1.1;
+    }
+
   .hero-buttons {
     flex-direction: column;
     align-items: center;
@@ -1497,11 +1535,13 @@
       Próximamente en tu ciudad
     </div>
 
-    <h1 class="hero-title" aria-label="Humanos online">
-      <span class="hero-title-main">Humanos</span>
-      <span class="hero-title-accent">online</span>
+    <h1 class="hero-title">
+      <span class="line1">Lo encontrás en el celu.</span>
+      <span class="line2">
+        Lo vivís <span class="neon">afuera.</span>
+      </span>
     </h1>
-
+    
     <div class="hero-ctas">
       <a href="#waitlist" class="btn-main">Quiero acceso anticipado</a>
       <a href="#como" class="btn-ghost">Ver cómo funciona</a>
