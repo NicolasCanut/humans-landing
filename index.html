@@ -1258,7 +1258,7 @@
     flex-direction: column;
     align-items: center;
     gap: 48px; /* 🔥 control real del espacio */
-    transform: translateY(30px);
+    transform: translateY(100px);
   }
 
   .side-copy {
@@ -1316,6 +1316,13 @@
 @media (max-width: 640px) {
   .phone-stage {
     gap: 48px;
+  }
+
+  .hero::before,
+  .hero::after,
+  .background-glow {
+    opacity: 0.25; /* probá 0.2–0.3 */
+    filter: blur(80px); /* más blur = menos intensidad */
   }
 
   /* línea base */
