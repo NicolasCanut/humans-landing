@@ -1,22 +1,21 @@
 <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
 
-  <!-- Definimos filtro de sombra -->
   <defs>
-    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-      <feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-color="rgba(0,0,0,0.6)" />
+    <filter id="shadow" x="-70%" y="-70%" width="240%" height="240%">
+      <feDropShadow dx="0" dy="1.2" stdDeviation="1.5" flood-color="rgba(0,0,0,0.65)" />
     </filter>
   </defs>
 
-  <!-- Grupo centrado -->
-  <g transform="translate(32,36)">
+  <!-- Centro óptico ajustado -->
+  <g transform="translate(32,38)">
 
-    <!-- H con sombra -->
+    <!-- H al límite -->
     <text
       x="0"
       y="0"
       text-anchor="middle"
       dominant-baseline="middle"
-      font-size="40"
+      font-size="48"
       font-family="Plus Jakarta Sans, Inter, Arial, sans-serif"
       font-weight="800"
       fill="#FFFFFF"
@@ -24,14 +23,13 @@
       H
     </text>
 
-    <!-- Dot arriba -->
+    <!-- Dot bien presente -->
     <circle
-      cx="14"
-      cy="-18"
-      r="5"
+      cx="16"
+      cy="-22"
+      r="6"
       fill="#00E5FF">
 
-      <!-- Pulse -->
       <animate
         attributeName="opacity"
         values="1;0.45;1"
@@ -40,7 +38,7 @@
 
       <animate
         attributeName="r"
-        values="5;4.2;5"
+        values="6;5;6"
         dur="1.6s"
         repeatCount="indefinite"/>
         
