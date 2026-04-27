@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Humans - Humanos online</title>
+  <title>Humans — La vida pasa afuera</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
@@ -74,24 +74,6 @@
       display: inline-block;
     }
 
-    .logo-dot {
-      width: 5px;
-      height: 5px;
-      margin-top: 1px;
-      border-radius: 50%;
-      background: var(--cyan);
-      box-shadow:
-        0 0 10px rgba(0,229,255,0.6),
-        0 0 24px rgba(0,229,255,0.22);
-      animation: logoDotPulse 2.2s ease-in-out infinite;
-      flex-shrink: 0;
-    }
-
-    @keyframes logoDotPulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: .65; transform: scale(.82); }
-    }
-
     .nav-links {
       display: flex;
       gap: 32px;
@@ -107,6 +89,20 @@
     }
 
     .nav-links a:hover { color: var(--text); }
+
+    .dot {
+      color: var(--cyan);
+      margin-left: 1px;
+      animation: dotPulse 2.8s ease-in-out infinite;
+      text-shadow:
+        0 0 6px rgba(0, 229, 255, 0.5),
+        0 0 14px rgba(0, 229, 255, 0.25);
+    }
+    
+    @keyframes dotPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
 
     .nav-btn {
       background: var(--cyan);
@@ -1581,8 +1577,9 @@
   <!-- NAV -->
   <nav>
     <a href="#" class="logo" aria-label="Humans">
-      <span class="logo-text">Humans</span>
-      <span class="logo-dot" aria-hidden="true"></span>
+      <span class="logo-text">
+        Humans<span class="dot">.</span>
+      </span>
     </a>
 
     <ul class="nav-links">
@@ -1889,8 +1886,9 @@
   <!-- FOOTER -->
   <footer>
     <span class="f-logo">
-      <span>Humans</span>
-      <span class="f-logo-dot" aria-hidden="true"></span>
+      <span class="f-logo">
+        Humans<span class="dot">.</span>
+      </span>
     </span>
 
     <p class="f-copy">© 2026 Humans. Todos los derechos reservados.</p>
