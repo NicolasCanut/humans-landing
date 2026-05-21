@@ -92,7 +92,8 @@
 
     .dot {
       color: var(--cyan);
-      margin-left: 1px;
+      margin-left: -1px;
+      transform: translateY(-1px);
       animation: dotPulse 2.8s ease-in-out infinite;
       text-shadow:
         0 0 6px rgba(0, 229, 255, 0.5),
@@ -1210,8 +1211,8 @@
 
     .f-logo {
       display: inline-flex;
-      align-items: flex-start;
-      gap: 5px;
+      align-items: baseline;
+      gap: 1px;
       font-family: 'Plus Jakarta Sans', sans-serif;
       font-weight: 800;
       font-size: 17px;
@@ -1885,9 +1886,7 @@
   <!-- FOOTER -->
   <footer>
     <span class="f-logo">
-      <span class="f-logo">
-        Humans<span class="dot">.</span>
-      </span>
+      Humans<span class="dot">.</span>
     </span>
 
     <p class="f-copy">© 2026 Humans. Todos los derechos reservados.</p>
