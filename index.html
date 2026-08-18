@@ -713,10 +713,16 @@
       line-height: 1.65;
     }
 
-    /* TWO TYPES */
+    /* EVENT TYPES */
     .types-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      /* auto-fit en vez de un fijo 1fr 1fr/1fr 1fr 1fr — mismo patrón que
+         .steps (más arriba): 3 columnas en desktop, se acomoda solo a 2+1
+         en pantallas intermedias según el ancho real disponible, y el
+         media query de mobile de abajo fuerza 1 columna. Así una card
+         nueva (o sacar una) no rompe el layout ni necesita retocar
+         breakpoints a mano. */
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
     }
 
@@ -742,6 +748,11 @@
       background: rgba(13,17,23,0.98);
     }
 
+    .type-card.priv-type:hover {
+      border-color: rgba(105,232,122,0.25);
+      background: rgba(13,17,23,0.98);
+    }
+
     .type-card::before {
       content:'';
       position:absolute;
@@ -753,6 +764,7 @@
 
     .type-card.open-type::before { background: linear-gradient(90deg, var(--cyan), transparent); }
     .type-card.req-type::before { background: linear-gradient(90deg, #FFB347, transparent); }
+    .type-card.priv-type::before { background: linear-gradient(90deg, #69E87A, transparent); }
 
     .type-icon {
       font-size: 32px;
@@ -791,6 +803,12 @@
       background: rgba(255,179,71,0.1);
       color: #FFB347;
       border: 1px solid rgba(255,179,71,0.2);
+    }
+
+    .priv-type .type-tag {
+      background: rgba(105,232,122,0.1);
+      color: #69E87A;
+      border: 1px solid rgba(105,232,122,0.2);
     }
 
     /* MAP */
@@ -846,7 +864,51 @@
       cursor: pointer;
     }
 
+    /* Antes el halo pulsante era un <circle> de SVG posicionado con
+       cx/cy en el viewBox 400x400 del mapa, mientras el pin es un div
+       HTML posicionado con left/top en px dentro de .map-mock (que es
+       fluido, width:100% + aspect-ratio:1) — dos sistemas de coordenadas
+       distintos sincronizados "a mano" con números aproximados, así que
+       nunca coincidían exactamente y se desalineaban distinto según el
+       tamaño real renderizado. Ahora .pin-wrap es el único origen: el
+       halo es un hijo absoluto centrado en el mismo box que el pin, así
+       que comparten el mismo centro siempre, sin importar breakpoint.
+    */
+    .pin-wrap {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pin-halo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: currentColor;
+      border: 1px solid currentColor;
+      opacity: 0;
+      pointer-events: none;
+      animation: pinHalo 3s ease-out infinite;
+    }
+
+    .pin-halo.c { color: var(--cyan); animation-duration: 3s; }
+    .pin-halo.o { color: #FFB347; animation-duration: 3.5s; }
+    .pin-halo.g { color: #69E87A; animation-duration: 4s; }
+
+    @keyframes pinHalo {
+      0%   { transform: translate(-50%, -50%) scale(.85); opacity: .55; }
+      70%  { opacity: 0; }
+      100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+    }
+
     .pin {
+      position: relative;
       width: 34px;
       height: 34px;
       border-radius: 50% 50% 50% 0;
@@ -1203,10 +1265,30 @@
       padding: 36px 48px;
       border-top: 1px solid var(--border);
       display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .f-row {
+      display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 16px;
+      width: 100%;
+    }
+
+    .f-credit {
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      opacity: .7;
+    }
+
+    .f-credit strong {
+      font-weight: 600;
+      color: var(--muted);
     }
 
     .f-logo {
@@ -1551,9 +1633,12 @@
       .map-inner { padding: 60px 24px; }
 
       footer {
-        flex-direction:column;
         text-align:center;
         padding:28px 24px;
+      }
+
+      .f-row {
+        flex-direction:column;
       }
 
       .f-links {
@@ -1712,7 +1797,7 @@
   <!-- TWO TYPES -->
   <div class="sec" id="tipos" style="padding-top:0">
     <span class="tag-label rv">Tipos de evento</span>
-    <h2 class="rv d1">Abierto o por solicitud.</h2>
+    <h2 class="rv d1">Vos decidís cómo se entra.</h2>
     <p class="sec-sub rv d2">El creador decide cómo manejar el ingreso.</p>
 
     <div class="types-grid">
@@ -1728,6 +1813,13 @@
         <h3>Por solicitud</h3>
         <p>Solicitás ingreso. Si el organizador acepta, recibís un ticket con código QR para mostrar al llegar al evento.</p>
         <span class="type-tag">Requiere ticket QR</span>
+      </div>
+
+      <div class="type-card priv-type rv d2">
+        <div class="type-icon">✉️</div>
+        <h3>Privado</h3>
+        <p>No aparece en el mapa ni en el feed de nadie más. Entran solo las personas que el organizador invitó directamente.</p>
+        <span class="type-tag">Solo por invitación</span>
       </div>
     </div>
   </div>
@@ -1763,34 +1855,29 @@
           <rect x="165" y="280" width="65" height="80" rx="3" fill="rgba(255,255,255,0.025)"/>
           <rect x="285" y="285" width="80" height="70" rx="3" fill="rgba(255,255,255,0.025)"/>
 
-          <circle cx="155" cy="115" r="16" fill="rgba(0,229,255,0.07)" stroke="rgba(0,229,255,0.25)" stroke-width="1">
-            <animate attributeName="r" values="14;24;14" dur="3s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values=".7;0;.7" dur="3s" repeatCount="indefinite"/>
-          </circle>
-
-          <circle cx="300" cy="210" r="14" fill="rgba(255,179,71,0.07)" stroke="rgba(255,179,71,0.25)" stroke-width="1">
-            <animate attributeName="r" values="12;22;12" dur="3.5s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values=".7;0;.7" dur="3.5s" repeatCount="indefinite"/>
-          </circle>
-
-          <circle cx="80" cy="300" r="12" fill="rgba(105,232,122,0.07)" stroke="rgba(105,232,122,0.25)" stroke-width="1">
-            <animate attributeName="r" values="10;20;10" dur="4s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values=".7;0;.7" dur="4s" repeatCount="indefinite"/>
-          </circle>
         </svg>
 
         <div class="map-marker" style="left:130px; top:88px">
-          <div class="pin c"><span class="pin-i">⚽</span></div>
+          <div class="pin-wrap">
+            <span class="pin-halo c"></span>
+            <div class="pin c"><span class="pin-i">⚽</span></div>
+          </div>
           <span class="pin-lbl">Partido 5×5</span>
         </div>
 
         <div class="map-marker" style="left:268px; top:190px">
-          <div class="pin o"><span class="pin-i">🎉</span></div>
+          <div class="pin-wrap">
+            <span class="pin-halo o"></span>
+            <div class="pin o"><span class="pin-i">🎉</span></div>
+          </div>
           <span class="pin-lbl">Previa · solicitud</span>
         </div>
 
         <div class="map-marker" style="left:56px; top:278px">
-          <div class="pin g"><span class="pin-i">🎸</span></div>
+          <div class="pin-wrap">
+            <span class="pin-halo g"></span>
+            <div class="pin g"><span class="pin-i">🎸</span></div>
+          </div>
           <span class="pin-lbl">Jam session</span>
         </div>
       </div>
@@ -1885,18 +1972,22 @@
 
   <!-- FOOTER -->
   <footer>
-    <span class="f-logo">
-      Humans<span class="dot">.</span>
-    </span>
+    <div class="f-row">
+      <span class="f-logo">
+        Humans<span class="dot">.</span>
+      </span>
 
-    <p class="f-copy">© 2026 Humans. Todos los derechos reservados.</p>
+      <p class="f-copy">© 2026 Humans. Todos los derechos reservados.</p>
 
-    <ul class="f-links">
-      <li><a href="https://instagram.com/humans_app" target="_blank" rel="noopener">Instagram</a></li>
-      <li><a href="./privacidad.html">Privacidad</a></li>
-      <li><a href="./terminos.html">Términos</a></li>
-      <li><a href="mailto:humansapp.oficial@gmail.com" target="_blank">Contacto</a></li>
-    </ul>
+      <ul class="f-links">
+        <li><a href="https://instagram.com/humans_app" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="./privacidad.html">Privacidad</a></li>
+        <li><a href="./terminos.html">Términos</a></li>
+        <li><a href="mailto:humansapp.oficial@gmail.com" target="_blank">Contacto</a></li>
+      </ul>
+    </div>
+
+    <p class="f-credit">Desarrollado por <strong>Nicolás Canut</strong> en Argentina 🇦🇷</p>
   </footer>
 
   <script>
