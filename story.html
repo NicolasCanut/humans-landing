@@ -5,6 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Historia compartida — Humans</title>
   <meta name="robots" content="noindex" />
+  <!-- QA build 128 (§13) — sin esto, el Share Sheet de iOS no tiene de
+       dónde sacar un preview real (LPLinkMetadata) para este link y cae al
+       ícono genérico de "texto". Reusa el único asset de marca que existe
+       en este repo (favicon.png) — nada inventado. Genérico a propósito
+       (no por-Story): resolver metadata real por id requeriría una API
+       server-side nueva, fuera de scope. -->
+  <link rel="icon" type="image/svg+xml" href="./favicon.png" />
+  <link rel="apple-touch-icon" href="./favicon.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Humans" />
+  <meta property="og:title" content="Historia compartida — Humans" />
+  <meta property="og:description" content="Mirá esta historia en Humans. Las historias duran 24 horas." />
+  <meta property="og:image" content="https://gethumans.app/favicon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Historia compartida — Humans" />
+  <meta name="twitter:description" content="Mirá esta historia en Humans. Las historias duran 24 horas." />
+  <meta name="twitter:image" content="https://gethumans.app/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
