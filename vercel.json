@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    { "source": "/story/:id*", "destination": "/story.html" },
+    { "source": "/event/:id*", "destination": "/event.html" }
+  ],
+  "headers": [
+    {
+      "source": "/.well-known/apple-app-site-association",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["GM33AU2MJJ.com.NicolasCanut.humans"],
+        "components": [
+          { "/": "/story/*", "comment": "Story deep link" },
+          { "/": "/event/*", "comment": "Event deep link" }
+        ]
+      }
+    ]
+  }
+}

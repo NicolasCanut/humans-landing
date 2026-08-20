@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evento en Humans — Humans</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cyan: #00E5FF;
+      --cyan-dim: rgba(0,229,255,0.10);
+      --cyan-glow: rgba(0,229,255,0.30);
+      --bg: #080B10;
+      --bg2: #0D1117;
+      --bg3: #111820;
+      --text: #EFF3F8;
+      --muted: #6A7A8A;
+      --border: rgba(255,255,255,0.07);
+      --r: 16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(8,11,16,0.85);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800; font-size: 21px; letter-spacing: -0.2px;
+      color: var(--text); text-decoration: none;
+    }
+    .logo em { color: var(--cyan); font-style: normal; }
+    .back-link {
+      color: var(--muted); text-decoration: none;
+      font-size: 14px; font-weight: 500;
+      display: flex; align-items: center; gap: 6px;
+      transition: color .2s;
+    }
+    .back-link:hover { color: var(--text); }
+
+    .bg-glow {
+      position: fixed; top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 500px;
+      background: radial-gradient(ellipse, rgba(0,229,255,0.06) 0%, transparent 65%);
+      pointer-events: none; z-index: 0;
+    }
+
+    .stage {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 140px 24px 100px;
+      position: relative; z-index: 1;
+    }
+
+    .card {
+      max-width: 440px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 40px 32px;
+    }
+
+    .card-icon {
+      width: 56px; height: 56px;
+      margin: 0 auto 20px;
+      background: var(--cyan-dim);
+      border: 1px solid rgba(0,229,255,0.2);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px;
+    }
+
+    .doc-tag {
+      display: inline-block;
+      font-size: 11.5px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--cyan); margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: clamp(24px, 4vw, 30px);
+      line-height: 1.2; letter-spacing: -0.6px;
+      margin-bottom: 14px;
+    }
+    h1 em { color: var(--cyan); font-style: normal; }
+
+    .lede {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+
+    .btn-main {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--cyan);
+      color: #000;
+      border: none;
+      border-radius: 100px;
+      padding: 14px 30px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s, opacity .2s;
+    }
+    .btn-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 36px var(--cyan-glow);
+    }
+
+    footer {
+      padding: 32px 48px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+      position: relative; z-index: 1;
+    }
+    .f-logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800; font-size: 17px; color: var(--text);
+    }
+    .f-logo em { color: var(--cyan); font-style:normal; }
+    .f-copy { font-size: 13px; color: var(--muted); }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .stage { padding: 110px 20px 80px; }
+      .card { padding: 32px 24px; }
+      footer { flex-direction: column; text-align: center; padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<nav>
+  <a href="./index.html" class="logo">Humans<em>.</em></a>
+  <a href="./index.html" class="back-link">← Volver al inicio</a>
+</nav>
+
+<div class="stage">
+  <div class="card">
+    <div class="card-icon">📍</div>
+    <span class="doc-tag">Evento en Humans</span>
+    <h1>Te compartieron<br>un evento de <em>Humans</em></h1>
+    <p class="lede">Abrí la app para ver los detalles del evento — fecha, lugar y quién más va.</p>
+    <a href="./index.html" class="btn-main">Conocé Humans →</a>
+  </div>
+</div>
+
+<footer>
+  <span class="f-logo">Humans<em>.</em></span>
+  <p class="f-copy">© 2026 Humans. Todos los derechos reservados.</p>
+</footer>
+
+</body>
+</html>
