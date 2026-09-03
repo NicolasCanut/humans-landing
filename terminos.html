@@ -4,9 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Términos y Condiciones — Humans</title>
+  <meta name="description" content="Términos y Condiciones de Humans: rol de la plataforma, uso aceptable, contenido y conducta prohibidos, seguridad en encuentros presenciales y limitación de responsabilidad." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://gethumans.app/terminos.html" />
+  <meta name="theme-color" content="#080B10" />
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Humans" />
+  <meta property="og:title" content="Términos y Condiciones — Humans" />
+  <meta property="og:description" content="Términos y Condiciones de la app Humans." />
+  <meta property="og:url" content="https://gethumans.app/terminos.html" />
+  <meta property="og:image" content="https://gethumans.app/og-default.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --cyan: #00E5FF;
@@ -25,13 +42,12 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       font-size: 16px;
       line-height: 1.7;
       overflow-x: hidden;
     }
 
-    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       display: flex; align-items: center; justify-content: space-between;
@@ -54,7 +70,6 @@
     }
     .back-link:hover { color: var(--text); }
 
-    /* BG GLOW */
     .bg-glow {
       position: fixed; top: 0; left: 50%;
       transform: translateX(-50%);
@@ -63,7 +78,6 @@
       pointer-events: none; z-index: 0;
     }
 
-    /* CONTENT */
     .page-wrap {
       max-width: 720px;
       margin: 0 auto;
@@ -94,9 +108,7 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .doc-section {
-      margin-bottom: 48px;
-    }
+    .doc-section { margin-bottom: 48px; }
 
     .section-num {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -176,13 +188,15 @@
     .contact-card a:hover { text-decoration: underline; }
     .contact-card span { color: var(--muted); font-size: 13px; display: block; margin-top: 2px; }
 
+    .inline-link { color: var(--cyan); text-decoration: none; font-weight: 600; }
+    .inline-link:hover { text-decoration: underline; }
+
     .divider {
       border: none;
       border-top: 1px solid var(--border);
       margin: 0 0 48px;
     }
 
-    /* FOOTER */
     footer {
       padding: 32px 48px;
       border-top: 1px solid var(--border);
@@ -195,7 +209,7 @@
     }
     .f-logo em { color: var(--cyan); font-style:normal; }
     .f-copy { font-size: 13px; color: var(--muted); }
-    .f-links { display:flex; gap:22px; list-style:none; }
+    .f-links { display:flex; gap:22px; list-style:none; flex-wrap: wrap; }
     .f-links a { font-size:13px; color: var(--muted); text-decoration:none; transition: color .2s; }
     .f-links a:hover { color: var(--text); }
 
@@ -213,106 +227,91 @@
 <div class="bg-glow"></div>
 
 <nav>
-  <a href="./index.html" class="logo">Humans<em>.</em></a>
-  <a href="./index.html" class="back-link">← Volver al inicio</a>
+  <a href="/" class="logo">Humans<em>.</em></a>
+  <a href="/" class="back-link">← Volver al inicio</a>
 </nav>
 
 <div class="page-wrap">
 
   <span class="doc-tag">Legal</span>
   <h1 class="doc-title">Términos y<br><em>Condiciones</em></h1>
-  <p class="doc-date">Última actualización: Abril 2026</p>
+  <p class="doc-date">Última actualización: 14 de agosto de 2026</p>
 
   <div class="doc-section">
     <div class="section-num">01</div>
     <h2 class="section-title">Introducción</h2>
-    <p>Bienvenido a Humans. Al acceder y utilizar la aplicación, aceptás estos Términos y Condiciones. Si no estás de acuerdo con alguno de ellos, no deberías utilizar el servicio.</p>
-    <p>Humans es una plataforma que permite a los usuarios crear, descubrir y participar en actividades y encuentros con otras personas.</p>
+    <p>Humans es una plataforma digital que permite a los usuarios crear, descubrir y participar en eventos organizados por otros usuarios. Al crear una cuenta, aceptás estos Términos y nuestra <a class="inline-link" href="/privacidad.html">Política de Privacidad</a>.</p>
   </div>
 
   <hr class="divider" />
 
   <div class="doc-section">
     <div class="section-num">02</div>
-    <h2 class="section-title">Uso de la plataforma</h2>
-    <p>Para utilizar Humans, debés:</p>
-    <ul>
-      <li>Tener al menos 18 años</li>
-      <li>Proporcionar información veraz</li>
-      <li>Usar la app de forma responsable</li>
-    </ul>
-    <p>El usuario es el único responsable de su comportamiento dentro y fuera de la plataforma.</p>
+    <h2 class="section-title">Rol de la plataforma</h2>
+    <p>Humans proporciona una plataforma tecnológica para conectar personas y facilitar la creación y el descubrimiento de eventos y encuentros presenciales organizados por usuarios. Salvo que se indique expresamente lo contrario, Humans no es el organizador, anfitrión, productor ni supervisor presencial de los eventos publicados por los usuarios: esa función corresponde a quien crea el evento.</p>
+    <p>Salvo por las verificaciones que Humans efectivamente implemente dentro de la plataforma, Humans no puede garantizar la identidad, las intenciones, la conducta, la confiabilidad ni la seguridad de los usuarios, ni que un evento se realice tal como fue publicado, que no sea modificado o cancelado, o que un usuario efectivamente asista. La conducta de un creador de evento, un asistente o cualquier tercero es responsabilidad exclusiva de esa persona y no debe interpretarse como una conducta de Humans.</p>
+    <p>Humans se reserva el derecho de retirar eventos, contenido o cuentas que incumplan estos Términos o que representen un riesgo para la comunidad.</p>
   </div>
 
   <hr class="divider" />
 
   <div class="doc-section">
     <div class="section-num">03</div>
-    <h2 class="section-title">Naturaleza del servicio</h2>
-    <p>Humans actúa únicamente como intermediario entre usuarios.</p>
-    <ul>
-      <li>Humans no organiza, supervisa ni garantiza los encuentros</li>
-      <li>Los eventos son creados por usuarios</li>
-      <li>La participación en actividades es bajo responsabilidad de cada persona</li>
-    </ul>
+    <h2 class="section-title">Uso aceptable</h2>
+    <p>El usuario se compromete a brindar información veraz y a no utilizar la plataforma para actividades ilegales. Para usar Humans tenés que tener al menos 18 años.</p>
   </div>
 
   <hr class="divider" />
 
   <div class="doc-section">
     <div class="section-num">04</div>
-    <h2 class="section-title">Cuenta de usuario</h2>
-    <p>Al registrarte:</p>
-    <ul>
-      <li>Sos responsable de mantener la confidencialidad de tu cuenta</li>
-      <li>Debés notificar cualquier uso no autorizado</li>
-      <li>Podemos suspender o eliminar cuentas que incumplan estos términos</li>
-    </ul>
+    <h2 class="section-title">Responsabilidad por el contenido de los eventos y por participar en ellos</h2>
+    <p>En la máxima medida permitida por la legislación aplicable, Humans no verifica ni garantiza que la información publicada por quien crea un evento, ni la publicada por cualquier otro usuario, sea veraz, exacta, completa, legítima o esté actualizada. Humans tampoco certifica la existencia, la calidad, la seguridad ni la realización efectiva de un evento creado por un usuario.</p>
+    <p>Quien crea un evento es responsable por el contenido que publica sobre ese evento, incluyendo su descripción, ubicación, horario, condiciones, requisitos y cualquier otra información relacionada. Las declaraciones o promesas realizadas por quien crea el evento, por asistentes o por terceros no constituyen declaraciones ni garantías de Humans.</p>
+    <p>Si Humans toma conocimiento de contenido falso, fraudulento, engañoso, peligroso o que incumpla estos Términos, puede retirarlo y tomar las medidas que correspondan sobre las cuentas involucradas.</p>
+    <p>Cada usuario decide voluntariamente si participa de un evento, y es responsable de evaluar las circunstancias del encuentro y de tomar las precauciones razonables antes y durante su participación.</p>
   </div>
 
   <hr class="divider" />
 
   <div class="doc-section">
     <div class="section-num">05</div>
-    <h2 class="section-title">Contenido generado por usuarios</h2>
-    <p>El usuario es responsable del contenido que publica. Al subir contenido, otorgás a Humans una licencia no exclusiva para mostrarlo dentro de la plataforma y utilizarlo para mejorar el servicio.</p>
-    <p>No está permitido publicar contenido:</p>
-    <ul>
-      <li>Ilegal</li>
-      <li>Violento o discriminatorio</li>
-      <li>Que promueva acoso o abuso</li>
-    </ul>
+    <h2 class="section-title">Interacciones entre usuarios</h2>
+    <p>Las interacciones entre usuarios son responsabilidad exclusiva de quienes participan.</p>
   </div>
 
   <hr class="divider" />
 
   <div class="doc-section">
     <div class="section-num">06</div>
-    <h2 class="section-title">Conducta del usuario</h2>
-    <p>No está permitido:</p>
-    <ul>
-      <li>Acosar, amenazar o dañar a otros usuarios</li>
-      <li>Crear eventos engañosos o falsos</li>
-      <li>Usar la app con fines ilegales</li>
-      <li>Realizar spam o publicidad no autorizada</li>
-    </ul>
+    <h2 class="section-title">Sistema de reputación</h2>
+    <p>Las evaluaciones reflejan opiniones individuales y no garantizan comportamientos futuros.</p>
   </div>
 
   <hr class="divider" />
 
   <div class="doc-section">
     <div class="section-num">07</div>
-    <h2 class="section-title">Moderación</h2>
-    <p>Humans se reserva el derecho de eliminar contenido, suspender o eliminar cuentas, y limitar el acceso al servicio sin necesidad de previo aviso en caso de incumplimiento.</p>
+    <h2 class="section-title">Contenido y conducta prohibidos — tolerancia cero</h2>
+    <p>Humans tiene tolerancia cero hacia el contenido objetable y la conducta abusiva. Está prohibido, entre otros:</p>
+    <ul>
+      <li>El acoso, la intimidación o el hostigamiento a otros usuarios.</li>
+      <li>El discurso de odio o la discriminación por raza, género, orientación sexual, religión, nacionalidad o discapacidad.</li>
+      <li>Las amenazas, la violencia o la incitación a la violencia.</li>
+      <li>La explotación sexual, el contenido sexual no consentido y el contenido que involucre menores.</li>
+      <li>La suplantación de identidad y la información falsa o engañosa.</li>
+      <li>Promover actividades ilegales o peligrosas.</li>
+    </ul>
+    <p>Cualquier usuario puede reportar contenido, eventos o cuentas que incumplan estas reglas desde la app. Humans revisa los reportes y puede eliminar contenido o eventos objetables, y suspender o eliminar definitivamente las cuentas de los usuarios infractores, sin necesidad de aviso previo. Podés leer las pautas completas en las <a class="inline-link" href="/normas-de-la-comunidad.html">Normas de la comunidad</a>.</p>
   </div>
 
   <hr class="divider" />
 
   <div class="doc-section">
     <div class="section-num">08</div>
-    <h2 class="section-title">Limitación de responsabilidad</h2>
+    <h2 class="section-title">Exención de responsabilidad</h2>
     <div class="highlight-box">
-      <p>Humans no es responsable por interacciones entre usuarios, daños o incidentes ocurridos en encuentros, ni conductas de terceros. El uso de la plataforma es bajo tu propio riesgo.</p>
+      <p>En la máxima medida permitida por la legislación aplicable, Humans no será responsable por daños, perjuicios, lesiones o pérdidas —físicas, emocionales o materiales— derivados de la organización, cancelación, modificación o desarrollo de un evento, ni de la interacción entre usuarios dentro o fuera de la plataforma. Los usuarios participan de los eventos bajo su propio riesgo.</p>
     </div>
   </div>
 
@@ -320,34 +319,48 @@
 
   <div class="doc-section">
     <div class="section-num">09</div>
-    <h2 class="section-title">Privacidad</h2>
-    <p>El uso de la plataforma implica la aceptación de nuestra <a href="./privacidad.html" style="color:var(--cyan);text-decoration:none;font-weight:600;">Política de Privacidad</a>.</p>
+    <h2 class="section-title">Seguridad en encuentros presenciales</h2>
+    <p>Salvo por las verificaciones que Humans efectivamente implemente, Humans no verifica la identidad de los usuarios ni garantiza su conducta. Al participar de un encuentro presencial organizado a través de Humans, te recomendamos tomar precauciones razonables, por ejemplo:</p>
+    <ul>
+      <li>Elegir puntos de encuentro y lugares públicos o apropiados, especialmente en un primer encuentro.</li>
+      <li>Avisar a una persona de confianza dónde vas a estar y con quién.</li>
+      <li>Evitar compartir información personal sensible (domicilio, datos financieros, etc.) con desconocidos.</li>
+      <li>Usar las herramientas de reporte y bloqueo de la app ante cualquier situación problemática.</li>
+    </ul>
   </div>
 
   <hr class="divider" />
 
   <div class="doc-section">
     <div class="section-num">10</div>
-    <h2 class="section-title">Modificaciones</h2>
-    <p>Podemos actualizar estos términos en cualquier momento. Se notificará a los usuarios cuando corresponda.</p>
+    <h2 class="section-title">Aceptación de los términos</h2>
+    <p>La creación de una cuenta en Humans, por cualquier método (email, Google, Apple u otro), requiere la aceptación explícita de estos Términos y de la Política de Privacidad. Esa aceptación queda registrada junto con la cuenta.</p>
   </div>
 
   <hr class="divider" />
 
   <div class="doc-section">
     <div class="section-num">11</div>
-    <h2 class="section-title">Jurisdicción</h2>
-    <p>Estos términos se rigen por las leyes de la República Argentina.</p>
+    <h2 class="section-title">Limitación de responsabilidad</h2>
+    <p>En la máxima medida permitida por la legislación aplicable, Humans queda eximido de responsabilidad por daños derivados del uso de la plataforma, más allá de lo previsto expresamente en estos Términos.</p>
   </div>
 
   <hr class="divider" />
 
   <div class="doc-section">
     <div class="section-num">12</div>
-    <h2 class="section-title">Contacto</h2>
-    <p>Para consultas legales o dudas:</p>
+    <h2 class="section-title">Jurisdicción</h2>
+    <p>Estos términos se rigen por las leyes de la República Argentina. Jurisdicción: Rosario, Santa Fe.</p>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="doc-section">
+    <div class="section-num">Contacto</div>
+    <h2 class="section-title">Consultas legales</h2>
+    <p>Para consultas legales o dudas sobre estos Términos:</p>
     <div class="contact-card">
-      <div class="contact-icon">✉️</div>
+      <div class="contact-icon" aria-hidden="true">✉️</div>
       <div>
         <a href="mailto:humansapp.oficial@gmail.com">humansapp.oficial@gmail.com</a>
         <span>Consultas legales y términos de uso</span>
@@ -361,9 +374,10 @@
   <span class="f-logo">Humans<em>.</em></span>
   <p class="f-copy">© 2026 Humans. Todos los derechos reservados.</p>
   <ul class="f-links">
-    <li><a href="https://instagram.com/humans_app" target="_blank" rel="noopener">Instagram</a></li>
-    <li><a href="./privacidad.html">Privacidad</a></li>
-    <li><a href="./terminos.html">Términos</a></li>
+    <li><a href="https://www.instagram.com/humans_app" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="/privacidad.html">Privacidad</a></li>
+    <li><a href="/terminos.html">Términos</a></li>
+    <li><a href="/normas-de-la-comunidad.html">Normas de la comunidad</a></li>
     <li><a href="mailto:humansapp.oficial@gmail.com">Contacto</a></li>
   </ul>
 </footer>

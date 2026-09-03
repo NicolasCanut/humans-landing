@@ -1,0 +1,9 @@
+{
+  "name": "humans-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "gethumans.app — static launch site. Not a build target; Vercel serves the files as-is (this file is in .vercelignore).",
+  "scripts": {
+    "test": "node --test"
+  }
+}

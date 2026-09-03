@@ -1,0 +1,17 @@
+# gethumans.app — robots
+# Public marketing pages are crawlable. App deep-link fallbacks, the
+# subscribe endpoint and internal files are not meant to be indexed.
+
+User-agent: *
+Allow: /$
+Allow: /privacidad.html
+Allow: /terminos.html
+Allow: /normas-de-la-comunidad.html
+Disallow: /api/
+Disallow: /event/
+Disallow: /story/
+Disallow: /event.html
+Disallow: /story.html
+Disallow: /.well-known/
+
+Sitemap: https://gethumans.app/sitemap.xml

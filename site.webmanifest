@@ -1,0 +1,16 @@
+{
+  "name": "Humans",
+  "short_name": "Humans",
+  "description": "Descubrí qué está pasando cerca, sumate a planes y organizá eventos. La vida pasa afuera.",
+  "lang": "es",
+  "start_url": "/",
+  "scope": "/",
+  "display": "browser",
+  "background_color": "#080B10",
+  "theme_color": "#080B10",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon.png", "sizes": "256x256", "type": "image/png" }
+  ]
+}

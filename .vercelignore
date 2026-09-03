@@ -1,0 +1,8 @@
+# Files that should not be part of the deployed site.
+# Kept in the repo for local dev / CI, never served.
+test/
+package.json
+*.docx
+*.md
+.DS_Store
+.gitignore

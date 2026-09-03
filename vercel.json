@@ -1,13 +1,37 @@
 {
+  "trailingSlash": false,
   "rewrites": [
     { "source": "/story/:id*", "destination": "/story.html" },
     { "source": "/event/:id*", "destination": "/event.html" }
   ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.gethumans.app" }],
+      "destination": "https://gethumans.app/$1",
+      "permanent": true
+    },
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/normas-de-la-comunidad", "destination": "/normas-de-la-comunidad.html", "permanent": true },
+    { "source": "/comunidad", "destination": "/normas-de-la-comunidad.html", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/.well-known/apple-app-site-association",
+      "headers": [{ "key": "Content-Type", "value": "application/json" }]
+    },
+    {
+      "source": "/(.*)",
       "headers": [
-        { "key": "Content-Type", "value": "application/json" }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), browsing-topics=()" },
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000" },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; upgrade-insecure-requests"
+        }
       ]
     }
   ]
