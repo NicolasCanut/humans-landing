@@ -36,8 +36,9 @@ test('index: robots allows indexing', () => {
 test('index: theme-color + manifest + icons', () => {
   assert.equal(meta(index, 'theme-color'), '#080B10');
   assert.equal(linkHref(index, 'manifest'), '/site.webmanifest');
-  assert.ok(/rel="icon"[^>]+favicon\.svg/.test(index));
+  assert.ok(/rel="icon"[^>]+favicon-32\.png/.test(index), 'has a png favicon');
   assert.ok(/rel="apple-touch-icon"/.test(index));
+  assert.ok(!/favicon\.svg/.test(index), 'the hand-drawn favicon.svg is gone');
 });
 
 test('index: Open Graph tags present and consistent', () => {

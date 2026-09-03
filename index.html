@@ -11,8 +11,8 @@
   <meta name="theme-color" content="#080B10" />
   <meta name="color-scheme" content="dark" />
 
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="alternate icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
 
@@ -91,6 +91,18 @@
       font-size: 16px;
       line-height: 1.6;
       overflow-x: hidden;
+      /* Marketing surface: feels like product, not a document. Decorative
+         copy is not accidentally selectable. Form fields opt back in below.
+         Does not affect links, buttons, focus, keyboard nav or a11y. */
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    input, textarea, select, [contenteditable="true"] {
+      -webkit-user-select: text;
+      -ms-user-select: text;
+      user-select: text;
     }
 
     a { color: inherit; }
@@ -121,7 +133,7 @@
       font-weight: 800; font-size: 19px; letter-spacing: -0.4px;
       color: var(--text); text-decoration: none; line-height: 1;
     }
-    .brand svg { width: 24px; height: 24px; display: block; }
+    .brand img { width: 27px; height: 27px; display: block; }
     .brand .dot { color: var(--cyan); }
     .nav-links { display: flex; gap: 28px; list-style: none; }
     .nav-links a {
@@ -169,7 +181,7 @@
       pointer-events: none;
     }
 
-    .hero-mark { width: 46px; height: 46px; margin-bottom: 26px; }
+    .hero-mark { width: 52px; height: 52px; margin-bottom: 26px; display: block; }
     .hero-pill {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--cyan-dim);
@@ -380,7 +392,7 @@
     footer { border-top: 1px solid var(--border); padding: 40px 32px; display: flex; flex-direction: column; gap: 18px; }
     .f-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
     .f-brand { display: inline-flex; align-items: center; gap: 8px; font-family: var(--display); font-weight: 800; font-size: 16px; }
-    .f-brand svg { width: 20px; height: 20px; }
+    .f-brand img { width: 23px; height: 23px; }
     .f-brand .dot { color: var(--cyan); }
     .f-copy { font-size: 12.5px; color: var(--muted); }
     .f-links { display: flex; flex-wrap: wrap; gap: 20px; list-style: none; }
@@ -424,7 +436,7 @@
 
   <nav>
     <a href="/" class="brand" aria-label="Humans — inicio">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0D1117"/><path d="M15 14h8v12h18V14h8v31h-8V33H23v12h-8z" fill="#EFF3F8"/><circle cx="49" cy="46" r="5" fill="#00E5FF"/></svg>
+      <img src="/humans-logo.png" alt="" width="27" height="27" />
       <span>Humans<span class="dot">.</span></span>
     </a>
     <ul class="nav-links">
@@ -443,7 +455,7 @@
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="hero-glow" aria-hidden="true"></div>
 
-      <svg class="hero-mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0D1117"/><path d="M15 14h8v12h18V14h8v31h-8V33H23v12h-8z" fill="#EFF3F8"/><circle cx="49" cy="46" r="5" fill="#00E5FF"/></svg>
+      <img class="hero-mark" src="/humans-logo.png" alt="Humans" width="52" height="52" />
 
       <p class="hero-pill"><span class="pulse" aria-hidden="true"></span> Próximamente en tu ciudad</p>
 
@@ -799,8 +811,8 @@
   <footer>
     <div class="f-row">
       <span class="f-brand">
-        <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0D1117"/><path d="M15 14h8v12h18V14h8v31h-8V33H23v12h-8z" fill="#EFF3F8"/><circle cx="49" cy="46" r="5" fill="#00E5FF"/></svg>
-        Humans<span class="dot">.</span>
+        <img src="/humans-logo.png" alt="" width="23" height="23" />
+        <span>Humans<span class="dot">.</span></span>
       </span>
       <p class="f-copy">© 2026 Humans. Todos los derechos reservados.</p>
       <ul class="f-links">
