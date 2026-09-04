@@ -42,7 +42,7 @@ test('index: hero uses the brand hierarchy (wordmark + tagline + lede)', () => {
   const index = read('index.html');
   assert.match(index, /class="hero-wordmark">Humans<span class="dot">\.<\/span>/);
   assert.match(index, /La vida pasa afuera\./);
-  assert.match(index, /Descubr[ií] qu[eé] est[aá] pasando cerca/);
+  assert.match(index, /Descubr[ií] gente con ganas/i);
 });
 
 test('index: no invented / deferred features are claimed', () => {
