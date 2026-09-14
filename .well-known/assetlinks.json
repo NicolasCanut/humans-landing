@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.NicolasCanut.humans",
+      "sha256_cert_fingerprints": [
+        "9C:55:58:92:FB:BA:74:BB:FA:FF:86:97:08:A4:29:5E:2D:99:0F:55:41:71:4A:3C:D4:B1:E0:DF:14:3E:C1:4B"
+      ]
+    }
+  }
+]
