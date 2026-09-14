@@ -41,8 +41,8 @@ test('all pages: no old combined tagline and no placeholder domains', () => {
 test('index: hero uses the brand hierarchy (wordmark + tagline + lede)', () => {
   const index = read('index.html');
   assert.match(index, /class="hero-wordmark">Humans<span class="dot">\.<\/span>/);
-  assert.match(index, /La vida pasa afuera\./);
-  assert.match(index, /Descubr[ií] qu[eé] est[aá] pasando cerca/);
+  assert.match(index, /class="hero-tagline">La vida pasa afuera\./);
+  assert.match(index, /class="hero-lede">/);
 });
 
 test('index: no invented / deferred features are claimed', () => {
@@ -103,7 +103,7 @@ test('user-select: marketing surfaces suppress accidental selection but keep inp
 });
 
 test('user-select: legal pages stay fully selectable', () => {
-  for (const p of ['privacidad.html', 'terminos.html', 'normas-de-la-comunidad.html']) {
+  for (const p of ['privacidad.html', 'terminos.html', 'normas-de-la-comunidad.html', 'eliminar-cuenta.html', 'tus-datos.html']) {
     const html = read(p);
     assert.ok(!/user-select:\s*none/.test(html), `${p} must not block text selection`);
   }

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Humans — La vida pasa afuera</title>
-  <meta name="description" content="Humans es la app para descubrir eventos y planes cerca tuyo, sumarte a lo que está pasando y organizar juntadas con amigos o gente nueva. La vida pasa afuera." />
+  <meta name="description" content="Humans es la red social para conectar con gente y hacer cosas en la vida real: Estados espontáneos, eventos cerca tuyo y planes armados por vos. La vida pasa afuera." />
   <link rel="canonical" href="https://gethumans.app/" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#080B10" />
@@ -20,7 +20,7 @@
   <meta property="og:site_name" content="Humans" />
   <meta property="og:locale" content="es_AR" />
   <meta property="og:title" content="Humans — La vida pasa afuera" />
-  <meta property="og:description" content="Descubrí eventos y planes cerca tuyo, sumate a lo que está pasando y organizá juntadas con amigos o gente nueva." />
+  <meta property="og:description" content="Descubrí gente con ganas de hacer algo, sumate a eventos cerca tuyo o armá tu propio plan." />
   <meta property="og:url" content="https://gethumans.app/" />
   <meta property="og:image" content="https://gethumans.app/og-default.png" />
   <meta property="og:image:width" content="1200" />
@@ -28,7 +28,7 @@
   <meta property="og:image:alt" content="Humans. La vida pasa afuera." />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Humans — La vida pasa afuera" />
-  <meta name="twitter:description" content="Descubrí eventos y planes cerca tuyo, sumate a lo que está pasando y organizá juntadas." />
+  <meta name="twitter:description" content="Descubrí gente con ganas de hacer algo, sumate a eventos cerca tuyo o armá tu propio plan." />
   <meta name="twitter:image" content="https://gethumans.app/og-default.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -44,6 +44,7 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Humans",
+      "description": "Humans es una red social para conectar con personas y hacer cosas en la vida real, a partir de Estados espontáneos y eventos organizados.",
       "url": "https://gethumans.app/",
       "logo": "https://gethumans.app/icon-192.png",
       "email": "humansapp.oficial@gmail.com",
@@ -219,7 +220,7 @@
       color: rgba(239,243,248,0.86);
     }
     .hero-lede {
-      max-width: 540px;
+      max-width: 560px;
       margin: 22px auto 0;
       font-size: clamp(15px, 1.7vw, 18px);
       color: var(--muted-2);
@@ -244,10 +245,25 @@
     .btn-ghost { background: rgba(255,255,255,0.02); color: var(--text); border-color: var(--border); font-weight: 500; }
     .btn-ghost:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.18); transform: translateY(-2px); }
 
+    /* ---------- STORE BADGES (unused until real store URLs exist — see
+       the HTML comment above hero-ctas and inside #acceso) ---------- */
+    .store-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .store-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--bg2); color: var(--text);
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: 13px 24px;
+      font-family: var(--sans); font-weight: 700; font-size: 14.5px;
+      text-decoration: none;
+      transition: transform .2s, border-color .2s;
+    }
+    .store-btn:hover { transform: translateY(-2px); border-color: rgba(0,229,255,0.3); }
+
     /* ---------- SECTION SHELL ---------- */
     section[id] { scroll-margin-top: 84px; }
     .band { padding: 96px 0; border-top: 1px solid var(--border); }
     .band.alt { background: linear-gradient(180deg, rgba(13,17,23,0.55), rgba(13,17,23,0.9)); }
+    .band.tight { padding: 64px 0; }
     .kicker {
       display: inline-block;
       font-size: 11.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
@@ -310,6 +326,14 @@
     .b.open { background: var(--cyan-dim); color: var(--cyan); }
     .b.req { background: rgba(255,179,71,0.12); color: var(--amber); }
 
+    /* ---------- NOW / ESTADO CARD (phone mockup content) ---------- */
+    .now-card { display: flex; align-items: center; gap: 10px; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 10px; }
+    .now-ava { flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
+    .now-text { flex: 1; min-width: 0; }
+    .now-msg { font-size: 11px; font-weight: 600; line-height: 1.3; }
+    .now-meta { font-size: 9px; color: var(--muted); margin-top: 2px; }
+    .now-reply { flex: 0 0 auto; font-size: 9.5px; font-weight: 700; color: var(--cyan); background: var(--cyan-dim); border: 1px solid rgba(0,229,255,0.2); border-radius: 100px; padding: 5px 10px; white-space: nowrap; }
+
     /* ---------- MAP MOCKUP ---------- */
     .mapmock {
       width: 100%; aspect-ratio: 1; position: relative; overflow: hidden;
@@ -329,10 +353,15 @@
     @keyframes halo { 0% { transform: translate(-50%,-50%) scale(.8); opacity: .5; } 70% { opacity: 0; } 100% { transform: translate(-50%,-50%) scale(1.8); opacity: 0; } }
     .pin { position: relative; width: 30px; height: 30px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); display: flex; align-items: center; justify-content: center; }
     .pin span { transform: rotate(45deg); font-size: 13px; }
+    /* Estados are shown as a round avatar marker on the map — never a
+       pin-drop — so they never read as a precise address the way an event
+       pin does. This mirrors the app's actual marker shape, not just a
+       color swap. */
+    .avatar-marker { position: relative; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; border: 2px solid var(--green); }
     .pin-lbl { margin-top: 3px; background: rgba(8,11,16,0.92); border: 1px solid var(--border); border-radius: 100px; padding: 2px 8px; font-size: 8.5px; font-weight: 600; white-space: nowrap; }
     .c-cyan { color: var(--cyan); } .c-cyan .pin { background: var(--cyan); box-shadow: 0 0 16px var(--cyan-glow); }
     .c-amber { color: var(--amber); } .c-amber .pin { background: var(--amber); }
-    .c-green { color: var(--green); } .c-green .pin { background: var(--green); }
+    .c-green { color: var(--green); } .c-green .avatar-marker { background: linear-gradient(135deg,#1a3a1a,#0d2510); color: #6ee7b7; }
 
     /* ---------- TICKET MOCKUP ---------- */
     .ticket { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 26px; position: relative; overflow: hidden; max-width: 380px; }
@@ -348,6 +377,19 @@
     .ticket-foot b { display: block; font-size: 12.5px; font-weight: 600; }
     .ticket-foot span { font-size: 10.5px; color: var(--muted); }
     .ticket-id { font-family: monospace; font-size: 10px; color: var(--muted); }
+
+    /* ---------- LOOP (Estado -> Chat -> Evento) ---------- */
+    .loop { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin-top: 44px; }
+    .loop-step { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 128px; text-align: center; }
+    .loop-ico { width: 56px; height: 56px; border-radius: 50%; background: var(--bg2); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+    .loop-step.hi .loop-ico { border-color: rgba(0,229,255,0.35); box-shadow: 0 0 0 4px var(--cyan-dim); }
+    .loop-label { font-size: 13px; font-weight: 700; }
+    .loop-sub { font-size: 11px; color: var(--muted); }
+    .loop-arrow { color: var(--muted); font-size: 20px; flex: 0 0 auto; }
+    @media (max-width: 760px) {
+      .loop { flex-direction: column; }
+      .loop-arrow { transform: rotate(90deg); }
+    }
 
     /* ---------- PRIVACY LIST ---------- */
     .plist { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 40px; }
@@ -417,6 +459,7 @@
       nav { padding: 14px 18px; }
       .nav-links { display: none; }
       .band { padding: 72px 0; }
+      .band.tight { padding: 48px 0; }
       .wrap { padding: 0 18px; }
     }
     @media (max-width: 400px) {
@@ -440,8 +483,8 @@
       <span>Humans<span class="dot">.</span></span>
     </a>
     <ul class="nav-links">
-      <li><a href="#descubri">Descubrí</a></li>
       <li><a href="#estados">Estados</a></li>
+      <li><a href="#eventos">Eventos</a></li>
       <li><a href="#personas">Personas</a></li>
       <li><a href="#privacidad">Privacidad</a></li>
     </ul>
@@ -465,54 +508,78 @@
       </h1>
 
       <p class="hero-lede">
-        Descubrí qué está pasando cerca, sumate a planes y organizá tus propios
-        eventos. Todo empieza en el celular y termina afuera.
+        Descubrí gente con ganas de hacer algo, sumate a eventos cerca tuyo o
+        armá tu propio plan. Todo empieza en el celular y termina afuera.
       </p>
 
       <div class="hero-ctas">
         <a href="#acceso" class="btn btn-primary">Quiero acceso anticipado</a>
-        <a href="#descubri" class="btn btn-ghost">Ver cómo funciona</a>
+        <a href="#estados" class="btn btn-ghost">Ver cómo funciona</a>
       </div>
+      <!--
+        STORE LAUNCH (do not enable without real, live URLs):
+        Once Humans has an approved App Store listing and/or Google Play
+        listing, replace the two CTAs above with real store badges, e.g.:
+
+          <div class="store-row">
+            <a href="<REAL_APP_STORE_URL>" class="store-btn">📱 Descargar en App Store</a>
+            <a href="<REAL_GOOGLE_PLAY_URL>" class="store-btn">▶ Disponible en Google Play</a>
+          </div>
+
+        Do the same swap in the #acceso waitlist section below (title "Sé de
+        los primeros" -> "Ya está disponible", CTA "Anotarme" -> real store
+        links). Only flip one store's badge if only that store has approved
+        the listing; keep the other CTA as waitlist until it does too.
+        Do NOT invent or guess a store URL — leave this commented out until
+        a real one exists.
+      -->
     </header>
 
-    <!-- DESCUBRÍ -->
-    <section class="band alt" id="descubri">
+    <!-- GENTE CON GANAS / ESTADOS -->
+    <section class="band alt" id="estados">
       <div class="wrap split">
         <div class="copy">
-          <span class="kicker reveal">Descubrí</span>
-          <h2 class="reveal dl1">Todo lo que está pasando cerca, en un solo lugar.</h2>
+          <span class="kicker reveal">Estados</span>
+          <h2 class="reveal dl1">Gente con ganas.</h2>
           <p class="band-sub reveal dl2">
-            Un feed y un mapa con los eventos y planes cerca tuyo, ahora. Cada
-            evento muestra su lugar, su día y su hora. Cambiás al mapa y ves
-            exactamente dónde está cada cosa.
+            Personas cerca tuyo, abiertas a conectar ahora. Publican qué tienen
+            ganas de hacer —tomar algo, salir a caminar, sumar gente para un
+            plan— sin necesidad de armar un evento. Son temporales: duran unas
+            horas y después desaparecen.
           </p>
-          <a href="#acceso" class="btn btn-primary reveal dl2">Quiero probarlo</a>
+          <p class="band-sub reveal dl2" style="margin-top:14px">
+            Ves qué tiene ganas de hacer alguien, no dónde está exactamente.
+            Si te interesa, respondés y pasás al chat. De ahí puede salir una
+            invitación a un evento o uno nuevo armado en el momento.
+          </p>
         </div>
         <div class="media reveal dl1">
-          <div class="phone" role="img" aria-label="Vista de la app Humans mostrando historias y una lista de eventos cercanos">
+          <div class="phone" role="img" aria-label="Estados de personas cerca, con lo que tienen ganas de hacer ahora">
             <div class="phone-notch"></div>
             <div class="phone-body">
-              <div class="stories">
-                <div class="st new">+</div>
-                <div class="st" style="border-color:#00E5FF;color:#00E5FF">MA</div>
-                <div class="st" style="border-color:#a78bfa;color:#a78bfa">LG</div>
-                <div class="st" style="border-color:#6ee7b7;color:#6ee7b7">RP</div>
-                <div class="st" style="border-color:#fbbf24;color:#fbbf24">JK</div>
+              <div class="now-card">
+                <div class="now-ava" style="background:linear-gradient(135deg,#1a3a4a,#0d2535);color:#00E5FF">M</div>
+                <div class="now-text">
+                  <div class="now-msg">"Tengo ganas de tomar algo 🍹"</div>
+                  <div class="now-meta">cerca tuyo · hace 12 min</div>
+                </div>
+                <span class="now-reply">Responder</span>
               </div>
-              <div class="ec">
-                <div class="ec-img">⚽</div>
-                <div class="ec-t">Partido 5×5 — Parque Sur</div>
-                <div class="ec-r"><span>📍 500 m</span><span>· Hoy 18:00</span><span class="b open">Abierto</span></div>
+              <div class="now-card">
+                <div class="now-ava" style="background:linear-gradient(135deg,#2a1a3a,#1a0d35);color:#a78bfa">L</div>
+                <div class="now-text">
+                  <div class="now-msg">"¿Alguien para coworking? 💻"</div>
+                  <div class="now-meta">cerca tuyo · hace 40 min</div>
+                </div>
+                <span class="now-reply">Responder</span>
               </div>
-              <div class="ec">
-                <div class="ec-img">🎉</div>
-                <div class="ec-t">Previa en Palermo · 20 cupos</div>
-                <div class="ec-r"><span>📍 1,2 km</span><span>· Hoy 22:00</span><span class="b req">Solicitud</span></div>
-              </div>
-              <div class="ec">
-                <div class="ec-img">🎸</div>
-                <div class="ec-t">Jam session · Bar Roma</div>
-                <div class="ec-r"><span>📍 800 m</span><span>· Sáb 20:30</span><span class="b open">Abierto</span></div>
+              <div class="now-card">
+                <div class="now-ava" style="background:linear-gradient(135deg,#1a3a1a,#0d2510);color:#6ee7b7">R</div>
+                <div class="now-text">
+                  <div class="now-msg">"Salgo a caminar un rato 🚶"</div>
+                  <div class="now-meta">cerca tuyo · hace 3 min</div>
+                </div>
+                <span class="now-reply">Responder</span>
               </div>
             </div>
           </div>
@@ -520,11 +587,78 @@
       </div>
     </section>
 
-    <!-- ESTADOS / NOW -->
-    <section class="band" id="estados">
+    <!-- EVENTOS CERCA TUYO -->
+    <section class="band" id="eventos">
+      <div class="wrap">
+        <span class="kicker reveal">Eventos</span>
+        <h2 class="reveal dl1">Eventos cerca tuyo.</h2>
+        <p class="band-sub reveal dl2">Cuando el plan es más armado, alguien lo organiza como evento y elige cómo se entra.</p>
+
+        <div class="grid3">
+          <div class="fcard reveal">
+            <div class="ico" aria-hidden="true">🟢</div>
+            <h3>Abierto</h3>
+            <p>Lo ves en la app con el lugar exacto y vas. Sin pedir permiso, sin esperar.</p>
+            <span class="tag">Ubicación exacta</span>
+          </div>
+          <div class="fcard amber reveal dl1">
+            <div class="ico" aria-hidden="true">🔐</div>
+            <h3>Por solicitud</h3>
+            <p>Pedís ingreso. Hasta que el organizador te acepta, ves una zona aproximada — la dirección exacta se revela 4 horas antes del evento.</p>
+            <span class="tag">Zona aproximada hasta ser aceptado</span>
+          </div>
+          <div class="fcard green reveal dl2">
+            <div class="ico" aria-hidden="true">✉️</div>
+            <h3>Privado</h3>
+            <p>No aparece para nadie más. Solo lo ven las personas que el organizador invitó, y la dirección se comparte con ellas.</p>
+            <span class="tag">Solo por invitación</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DE UN ESTADO A UN ENCUENTRO -->
+    <section class="band alt" id="encuentro">
+      <div class="wrap" style="text-align:center">
+        <span class="kicker reveal">De la intención al plan</span>
+        <h2 class="reveal dl1">De un Estado a un encuentro real.</h2>
+        <p class="band-sub reveal dl2" style="margin:0 auto">Una intención espontánea puede convertirse en un plan real.</p>
+
+        <div class="loop reveal dl2">
+          <div class="loop-step hi">
+            <div class="loop-ico" aria-hidden="true">🗨️</div>
+            <div class="loop-label">Estado</div>
+            <div class="loop-sub">"Tengo ganas de…"</div>
+          </div>
+          <span class="loop-arrow" aria-hidden="true">→</span>
+          <div class="loop-step">
+            <div class="loop-ico" aria-hidden="true">👋</div>
+            <div class="loop-label">Respondés</div>
+          </div>
+          <span class="loop-arrow" aria-hidden="true">→</span>
+          <div class="loop-step">
+            <div class="loop-ico" aria-hidden="true">💬</div>
+            <div class="loop-label">Chat</div>
+          </div>
+          <span class="loop-arrow" aria-hidden="true">→</span>
+          <div class="loop-step">
+            <div class="loop-ico" aria-hidden="true">🎉</div>
+            <div class="loop-label">Invitás o creás un evento</div>
+          </div>
+          <span class="loop-arrow" aria-hidden="true">→</span>
+          <div class="loop-step hi">
+            <div class="loop-ico" aria-hidden="true">🤝</div>
+            <div class="loop-label">Se ven afuera</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAPA -->
+    <section class="band" id="mapa">
       <div class="wrap split">
         <div class="media reveal dl1">
-          <div class="mapmock" role="img" aria-label="Mapa con marcadores de eventos y estados cercanos">
+          <div class="mapmock" role="img" aria-label="Mapa con eventos y una persona con un Estado activo cerca">
             <svg viewBox="0 0 400 400" aria-hidden="true">
               <line x1="0" y1="130" x2="400" y2="130" stroke="rgba(255,255,255,0.05)" stroke-width="7"/>
               <line x1="0" y1="262" x2="400" y2="262" stroke="rgba(255,255,255,0.05)" stroke-width="7"/>
@@ -542,98 +676,39 @@
             </svg>
             <div class="marker c-cyan" style="left:32%;top:22%">
               <div class="pin-wrap"><span class="halo"></span><div class="pin"><span>⚽</span></div></div>
-              <span class="pin-lbl">Partido 5×5</span>
+              <span class="pin-lbl">Partido 5×5 · abierto</span>
             </div>
             <div class="marker c-amber" style="left:66%;top:48%">
               <div class="pin-wrap"><span class="halo"></span><div class="pin"><span>🎉</span></div></div>
-              <span class="pin-lbl">Previa · solicitud</span>
+              <span class="pin-lbl">Previa · zona aprox.</span>
             </div>
             <div class="marker c-green" style="left:16%;top:70%">
-              <div class="pin-wrap"><span class="halo"></span><div class="pin"><span>🎸</span></div></div>
-              <span class="pin-lbl">Con ganas de música</span>
+              <div class="pin-wrap"><span class="halo"></span><div class="avatar-marker">R</div></div>
+              <span class="pin-lbl">Con ganas de café</span>
             </div>
           </div>
         </div>
         <div class="copy">
-          <span class="kicker reveal">Estados</span>
-          <h2 class="reveal dl1">¿Qué tenés ganas de hacer?</h2>
+          <span class="kicker reveal">Mapa</span>
+          <h2 class="reveal dl1">Descubrí qué está pasando en tu zona.</h2>
           <p class="band-sub reveal dl2">
-            Publicá un Estado con lo que tenés ganas de hacer y por cuánto tiempo.
-            Aparece en el mapa para gente cerca —con ubicación aproximada— y se
-            borra solo a las pocas horas. Sin evento, sin planificar: la previa de
-            un plan.
+            Sin revelar más ubicación de la necesaria. Un evento abierto muestra
+            su pin exacto. Uno por solicitud muestra una zona aproximada hasta
+            que te acepten. Y un Estado aparece como una persona cerca, no como
+            una dirección.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- EVENTOS -->
-    <section class="band alt" id="eventos">
-      <div class="wrap">
-        <span class="kicker reveal">Eventos</span>
-        <h2 class="reveal dl1">Vos decidís cómo se entra.</h2>
-        <p class="band-sub reveal dl2">Quien crea el evento elige cómo manejar el ingreso.</p>
-
-        <div class="grid3">
-          <div class="fcard reveal">
-            <div class="ico" aria-hidden="true">🟢</div>
-            <h3>Abierto</h3>
-            <p>Lo ves en la app y vas. Sin pedir permiso, sin esperar. El lugar y la hora están ahí.</p>
-            <span class="tag">Entrada libre</span>
-          </div>
-          <div class="fcard amber reveal dl1">
-            <div class="ico" aria-hidden="true">🔐</div>
-            <h3>Por solicitud</h3>
-            <p>Pedís ingreso y el organizador decide. Si te acepta, recibís un ticket con QR para mostrar al llegar.</p>
-            <span class="tag">Requiere ticket QR</span>
-          </div>
-          <div class="fcard green reveal dl2">
-            <div class="ico" aria-hidden="true">✉️</div>
-            <h3>Privado</h3>
-            <p>No aparece en el mapa ni en el feed de nadie. Entran solo las personas que el organizador invitó.</p>
-            <span class="tag">Solo por invitación</span>
-          </div>
-        </div>
-
-        <div class="split" style="margin-top:64px">
-          <div class="copy">
-            <h2 class="reveal" style="font-size:clamp(24px,3.6vw,34px)">Tu entrada en el celular.</h2>
-            <p class="band-sub reveal dl1">
-              Cuando te aceptan en un evento por solicitud, recibís un ticket con
-              un QR único. Lo mostrás al llegar y el organizador te hace el
-              check-in. Sin apps extra, sin papel.
-            </p>
-          </div>
-          <div class="media reveal dl1">
-            <div class="ticket">
-              <div class="ticket-top">
-                <div>
-                  <div class="ticket-name">Previa en Palermo</div>
-                  <div class="ticket-meta">Sábado 29 · 22:00</div>
-                </div>
-                <span class="ticket-badge">Confirmado</span>
-              </div>
-              <hr class="dash" />
-              <div class="qr" id="qr" aria-hidden="true"></div>
-              <hr class="dash" />
-              <div class="ticket-foot">
-                <div><b>Tu entrada</b><span>1 persona · general</span></div>
-                <span class="ticket-id">#HU-20941</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PERSONAS -->
-    <section class="band" id="personas">
+    <!-- PERSONAS / CHAT / SOCIAL -->
+    <section class="band alt" id="personas">
       <div class="wrap">
         <span class="kicker reveal">Personas</span>
         <h2 class="reveal dl1">La gente es la mitad del plan.</h2>
         <p class="band-sub reveal dl2">
-          Agregá amigos, buscá gente por nombre o usuario, e invitá a quien
-          quieras a un evento.
+          Encontrá gente conocida o conocé gente nueva haciendo algo — no
+          buscando un perfil.
         </p>
         <div class="grid3">
           <div class="fcard reveal">
@@ -644,27 +719,28 @@
           <div class="fcard reveal dl1">
             <div class="ico" aria-hidden="true">✉️</div>
             <h3>Invitaciones</h3>
-            <p>Invitá a amigos —o a alguien que acabás de conocer— a cualquiera de tus eventos.</p>
+            <p>Invitá a un amigo —o a alguien que acabás de conocer— a cualquiera de tus eventos, sin tener que ser amigos primero.</p>
           </div>
           <div class="fcard reveal dl2">
             <div class="ico" aria-hidden="true">💬</div>
             <h3>Chat</h3>
-            <p>Mensajes con texto, fotos, video y notas de voz. Cada evento tiene su chat grupal. Los mensajes de desconocidos llegan como solicitud: vos decidís si se abre.</p>
+            <p>Texto, fotos, video y notas de voz. Cada evento tiene su chat grupal. Si te escribe alguien que no conocés, te llega como solicitud: vos elegís aceptar o no.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- HISTORIAS -->
-    <section class="band alt" id="historias">
+    <section class="band" id="historias">
       <div class="wrap split">
         <div class="copy">
           <span class="kicker reveal">Historias</span>
           <h2 class="reveal dl1">Lo que está pasando, mientras pasa.</h2>
           <p class="band-sub reveal dl2">
-            Fotos y videos que duran 24 horas, alrededor de lo que estás viviendo.
-            Podés responder, reaccionar, mencionar a alguien, marcar «estoy acá» o
-            enganchar tu Estado.
+            Fotos y videos de 24 horas alrededor de lo que estás viviendo — un
+            evento, una previa, un Estado. Podés responder, reaccionar,
+            mencionar a alguien o marcar «estoy acá». Son una capa social
+            alrededor de los encuentros, no el centro de la app.
           </p>
         </div>
         <div class="media reveal dl1">
@@ -688,7 +764,7 @@
     </section>
 
     <!-- PRIVACIDAD -->
-    <section class="band" id="privacidad">
+    <section class="band alt" id="privacidad">
       <div class="wrap">
         <span class="kicker reveal">Privacidad y control</span>
         <h2 class="reveal dl1">Vos decidís qué se muestra.</h2>
@@ -699,70 +775,72 @@
         <div class="plist">
           <div class="pitem reveal">
             <h3>Tu ubicación exacta no es pública</h3>
-            <p>Se muestra una zona aproximada. La dirección exacta de un evento aparece según su tipo y cuándo confirmás.</p>
+            <p>Se muestra una zona aproximada. La dirección exacta de un evento se comparte según su tipo y cuándo te confirman.</p>
           </div>
           <div class="pitem reveal dl1">
             <h3>Ocultá un Estado a personas concretas</h3>
-            <p>Podés publicar un Estado y elegir que ciertas personas no lo vean.</p>
+            <p>Podés publicar un Estado y elegir qué personas no lo van a ver.</p>
           </div>
           <div class="pitem reveal dl2">
-            <h3>Tu asistencia es privada</h3>
-            <p>Que vayas a un evento no se anuncia. Lo controlás vos.</p>
+            <h3>Vos decidís quién te ve ir</h3>
+            <p>Podés controlar si tus amigos ven que vas a un evento antes de sumarse. Quien ya tiene acceso al mismo evento te ve igual en la lista de asistentes.</p>
           </div>
           <div class="pitem reveal">
             <h3>Bloquear y denunciar</h3>
-            <p>Podés bloquear a cualquiera y reportar un evento, una historia, un mensaje o una cuenta. Cuentas desde los 18.</p>
+            <p>Podés bloquear a cualquiera y reportar un evento, una historia, un mensaje o una cuenta. Humans es para mayores de 13 años; Estados es exclusivamente para mayores de 18.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ORGANIZÁ -->
-    <section class="band alt" id="organiza">
+    <!-- QR / EXPERIENCIA DEL EVENTO -->
+    <section class="band" id="experiencia">
       <div class="wrap split">
+        <div class="copy">
+          <span class="kicker reveal">De punta a punta</span>
+          <h2 class="reveal dl1">Tu evento, de punta a punta.</h2>
+          <p class="band-sub reveal dl2">
+            Si te aceptan en un evento por solicitud, tenés un ticket con un QR
+            único para mostrar al llegar. Si lo armás vos, elegís el tipo de
+            acceso, manejás las solicitudes, hacés el check-in escaneando ese
+            QR y al final tenés un resumen de quién fue.
+          </p>
+          <div class="tags reveal dl2" style="justify-content:flex-start; margin:24px 0 0">
+            <span class="etag hi">🎟️ Ticket con QR</span>
+            <span class="etag">✅ Check-in</span>
+            <span class="etag hi">📋 Solicitudes</span>
+            <span class="etag">📊 Resumen post-evento</span>
+          </div>
+          <a href="#acceso" class="btn btn-primary reveal dl2">Quiero organizar</a>
+        </div>
         <div class="media reveal dl1">
-          <div class="phone" role="img" aria-label="Panel de organización de un evento en Humans">
-            <div class="phone-notch"></div>
-            <div class="phone-body">
-              <div class="ec">
-                <div class="ec-t" style="font-size:12px">Crear evento</div>
-                <div class="ec-r"><span class="b open">Abierto</span><span class="b req">Solicitud</span><span class="b" style="background:rgba(105,232,122,.12);color:#69E87A">Privado</span></div>
+          <div class="ticket">
+            <div class="ticket-top">
+              <div>
+                <div class="ticket-name">Previa en Palermo</div>
+                <div class="ticket-meta">Sábado 29 · 22:00</div>
               </div>
-              <div class="ec">
-                <div class="ec-t">Solicitudes · 3 pendientes</div>
-                <div class="ec-r"><span>Aceptar</span><span>· Rechazar</span></div>
-              </div>
-              <div class="ec">
-                <div class="ec-t">Check-in con QR</div>
-                <div class="ec-r"><span>12 / 20 ingresaron</span></div>
-              </div>
-              <div class="ec">
-                <div class="ec-t">Resumen del evento</div>
-                <div class="ec-r"><span>Asistieron · Valoraciones</span></div>
-              </div>
+              <span class="ticket-badge">Confirmado</span>
+            </div>
+            <hr class="dash" />
+            <div class="qr" id="qr" aria-hidden="true"></div>
+            <hr class="dash" />
+            <div class="ticket-foot">
+              <div><b>Tu entrada</b><span>1 persona · general</span></div>
+              <span class="ticket-id">#HU-20941</span>
             </div>
           </div>
-        </div>
-        <div class="copy">
-          <span class="kicker reveal">Organizá</span>
-          <h2 class="reveal dl1">Armá algo y juntá gente.</h2>
-          <p class="band-sub reveal dl2">
-            Creá un evento en un minuto, elegí cómo se entra, manejá las
-            solicitudes y hacé el check-in con QR. Cuando termina, tenés un
-            resumen de quién fue y cómo estuvo.
-          </p>
-          <a href="#acceso" class="btn btn-primary reveal dl2">Quiero organizar</a>
         </div>
       </div>
     </section>
 
     <!-- CUALQUIER PLAN -->
-    <section class="band" style="text-align:center">
+    <section class="band tight" id="planes" style="text-align:center">
       <div class="wrap">
-        <span class="kicker reveal">Sin categorías</span>
-        <h2 class="reveal dl1">Cualquier plan. Cualquier persona.</h2>
+        <span class="kicker reveal">Variedad</span>
+        <h2 class="reveal dl1" style="font-size:clamp(24px,3.6vw,34px)">Cualquier plan que tengas ganas de armar.</h2>
         <p class="band-sub reveal dl2" style="margin:0 auto">
-          Humans no encasilla los planes. La libertad de crear y encontrar es tuya.
+          De un café improvisado a una previa con veinte personas.
         </p>
         <div class="tags reveal dl2">
           <span class="etag hi">⚽ Fútbol en el parque</span>
@@ -783,7 +861,12 @@
       </div>
     </section>
 
-    <!-- WAITLIST -->
+    <!-- WAITLIST / CTA FINAL
+         STORE LAUNCH: once real App Store / Google Play URLs exist, this
+         whole block becomes "Ya está disponible" + a .store-row of
+         .store-btn links (see the CSS/markup template near hero-ctas
+         above). Keep the waitlist form only for stores that are not live
+         yet. Do NOT invent a store URL ahead of time. -->
     <section class="waitlist" id="acceso">
       <div class="waitlist-inner">
         <span class="kicker reveal">Acceso anticipado</span>
@@ -820,6 +903,8 @@
         <li><a href="/privacidad.html">Privacidad</a></li>
         <li><a href="/terminos.html">Términos</a></li>
         <li><a href="/normas-de-la-comunidad.html">Normas de la comunidad</a></li>
+        <li><a href="/eliminar-cuenta.html">Eliminar cuenta</a></li>
+        <li><a href="/tus-datos.html">Tus datos</a></li>
         <li><a href="mailto:humansapp.oficial@gmail.com">Contacto</a></li>
       </ul>
     </div>
