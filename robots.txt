@@ -7,6 +7,8 @@ Allow: /$
 Allow: /privacidad.html
 Allow: /terminos.html
 Allow: /normas-de-la-comunidad.html
+Allow: /eliminar-cuenta.html
+Allow: /tus-datos.html
 Disallow: /api/
 Disallow: /event/
 Disallow: /story/

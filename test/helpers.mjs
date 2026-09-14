@@ -11,6 +11,8 @@ export const HTML_PAGES = [
   'privacidad.html',
   'terminos.html',
   'normas-de-la-comunidad.html',
+  'eliminar-cuenta.html',
+  'tus-datos.html',
   'event.html',
   'story.html',
 ];

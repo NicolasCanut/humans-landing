@@ -18,6 +18,8 @@ test('robots.txt: disallows private / internal surfaces', () => {
 test('robots.txt: allows the public marketing pages', () => {
   assert.match(robots, /Allow:\s*\/\$/);
   assert.match(robots, /Allow:\s*\/privacidad\.html/);
+  assert.match(robots, /Allow:\s*\/eliminar-cuenta\.html/);
+  assert.match(robots, /Allow:\s*\/tus-datos\.html/);
 });
 
 test('sitemap.xml: well-formed urlset, lists only public canonical URLs', () => {
@@ -31,8 +33,18 @@ test('sitemap.xml: well-formed urlset, lists only public canonical URLs', () => 
       'https://gethumans.app/normas-de-la-comunidad.html',
       'https://gethumans.app/privacidad.html',
       'https://gethumans.app/terminos.html',
+      'https://gethumans.app/eliminar-cuenta.html',
+      'https://gethumans.app/tus-datos.html',
     ].sort(),
   );
+});
+
+test('sitemap.xml: legal + compliance pages have a current lastmod, not a stale one', () => {
+  for (const loc of ['privacidad.html', 'terminos.html', 'normas-de-la-comunidad.html', 'eliminar-cuenta.html', 'tus-datos.html']) {
+    const block = sitemap.slice(sitemap.indexOf(loc));
+    const lastmod = block.match(/<lastmod>([^<]+)<\/lastmod>/)[1];
+    assert.equal(lastmod, '2026-09-13', `${loc} lastmod should reflect today's content`);
+  }
 });
 
 test('sitemap.xml: never exposes dynamic / private routes', () => {

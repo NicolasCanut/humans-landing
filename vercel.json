@@ -13,7 +13,11 @@
     },
     { "source": "/index.html", "destination": "/", "permanent": true },
     { "source": "/normas-de-la-comunidad", "destination": "/normas-de-la-comunidad.html", "permanent": true },
-    { "source": "/comunidad", "destination": "/normas-de-la-comunidad.html", "permanent": true }
+    { "source": "/comunidad", "destination": "/normas-de-la-comunidad.html", "permanent": true },
+    { "source": "/eliminar-cuenta", "destination": "/eliminar-cuenta.html", "permanent": true },
+    { "source": "/delete-account", "destination": "/eliminar-cuenta.html", "permanent": true },
+    { "source": "/tus-datos", "destination": "/tus-datos.html", "permanent": true },
+    { "source": "/delete-data", "destination": "/tus-datos.html", "permanent": true }
   ],
   "headers": [
     {
